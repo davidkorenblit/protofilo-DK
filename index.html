@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>David's Library – Portfolio</title>
-  <meta name="description" content="David Korenblit's portfolio — a warm, library-styled bookshelf of data-science projects and research notebooks." />
+  <title>David's Library – Grand 3D Portfolio</title>
+  <meta name="description" content="David Korenblit's portfolio — an immersive 3D grand library study room featuring interactive data-science projects, research notebooks, and direct demo access." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -17,120 +17,280 @@
   <!-- ============================================================= -->
   <header id="site-header">
     <div class="header-inner">
-      <a href="#" class="logo" aria-label="Home">
-        <span class="logo-icon" aria-hidden="true">📖</span>
+      <a href="#" class="logo" aria-label="David's Library">
+        <span class="logo-emblem">🏛️</span>
         <span class="logo-text" data-en="David's Library" data-he="הספרייה של דוד">David's Library</span>
       </a>
 
       <nav id="main-nav" aria-label="Main navigation">
         <ul>
-          <li><a href="#featured" data-en="Featured" data-he="עבודות מובילות">Featured</a></li>
-          <li><a href="#lab" data-en="Lab" data-he="מעבדה">Lab</a></li>
-          <li><a href="#about" data-en="About" data-he="אודות">About</a></li>
-          <li><a href="#contact" data-en="Contact" data-he="צור קשר">Contact</a></li>
+          <li><a href="#bookcase" data-en="Featured Works" data-he="ספרים מובילים">Featured Works</a></li>
+          <li><a href="#lab-shelf-container" data-en="Research Lab" data-he="פנקסי מעבדה">Research Lab</a></li>
+          <li><a href="#study-desk" data-en="The Author" data-he="על המחבר">The Author</a></li>
+          <li><a href="#contact-station" data-en="Contact" data-he="יצירת קשר">Contact</a></li>
         </ul>
       </nav>
 
-      <div class="lang-toggle" role="radiogroup" aria-label="Language">
-        <button id="btn-lang-en" class="lang-btn active" aria-pressed="true">EN</button>
-        <button id="btn-lang-he" class="lang-btn" aria-pressed="false">עב</button>
+      <div class="header-right">
+        <!-- Interactive Banker's Lamp Switch -->
+        <button id="lamp-toggle" class="lamp-switch" title="Toggle Desk Lamp Lighting" aria-label="Toggle Lighting">
+          <span class="lamp-icon">💡</span>
+          <span class="lamp-label" data-en="Atmosphere" data-he="תאורה">Atmosphere</span>
+        </button>
+
+        <!-- Bilingual toggle -->
+        <div class="lang-toggle" role="radiogroup" aria-label="Language selection">
+          <button id="btn-lang-en" class="lang-btn active" aria-pressed="true">EN</button>
+          <button id="btn-lang-he" class="lang-btn" aria-pressed="false">עב</button>
+        </div>
       </div>
     </div>
   </header>
 
   <!-- ============================================================= -->
-  <!-- HERO — ambient desk-lamp glow                                 -->
+  <!-- ROOM CONTAINER WITH 3D PERSPECTIVE                            -->
   <!-- ============================================================= -->
-  <section id="hero">
-    <div class="lamp" aria-hidden="true"></div>
-    <h1 data-en="Welcome to the Library" data-he="ברוכים הבאים לספרייה">Welcome to the Library</h1>
-    <p class="hero-sub" data-en="Projects, research & the story behind them — presented as books on a shelf." data-he="פרויקטים, מחקר והסיפור שמאחוריהם — מוצגים כספרים על מדף.">Projects, research &amp; the story behind them — presented as books on a shelf.</p>
-  </section>
+  <div id="library-room" class="library-room">
 
-  <!-- ============================================================= -->
-  <!-- FEATURED SHELF                                                -->
-  <!-- ============================================================= -->
-  <section id="featured" class="shelf-section">
-    <h2 class="shelf-label" data-en="Featured Works" data-he="עבודות מובילות">Featured Works</h2>
-    <div class="bookcase">
-      <div class="shelf-row" id="featured-shelf">
-        <!-- Books injected by JS -->
+    <!-- Ambient lighting overlay and volumetric cone -->
+    <div class="room-lighting" aria-hidden="true">
+      <div class="lamp-beam"></div>
+      <div class="dust-particles">
+        <span class="mote mote-1"></span>
+        <span class="mote mote-2"></span>
+        <span class="mote mote-3"></span>
+        <span class="mote mote-4"></span>
+        <span class="mote mote-5"></span>
       </div>
-      <div class="shelf-plank" aria-hidden="true"></div>
     </div>
-  </section>
 
-  <!-- ============================================================= -->
-  <!-- LAB SHELF                                                     -->
-  <!-- ============================================================= -->
-  <section id="lab" class="shelf-section lab-section">
-    <h2 class="shelf-label" data-en="Lab Notebooks" data-he="פנקסי מחקר">Lab Notebooks</h2>
-    <div class="bookcase">
-      <div class="shelf-row" id="lab-shelf">
-        <!-- Notebooks injected by JS -->
+    <!-- HERO INTRODUCTION -->
+    <section id="hero" class="hero-study">
+      <div class="hero-crest">
+        <div class="crest-line"></div>
+        <span class="crest-symbol">✦ 🏛️ ✦</span>
+        <div class="crest-line"></div>
       </div>
-      <div class="shelf-plank" aria-hidden="true"></div>
-    </div>
-  </section>
+      <h1 data-en="The Private Study &amp; Archive" data-he="חדר הקריאה והארכיון האישי">The Private Study &amp; Archive</h1>
+      <p class="hero-sub" data-en="Data Science, Machine Learning &amp; Software Engineering — pull a book to explore or launch live demos directly." data-he="מדעי נתונים, למידת מכונה והנדסת תוכנה — שלפו ספר לעיון או היכנסו ישירות להדגמות החיות.">
+        Data Science, Machine Learning &amp; Software Engineering — pull a book to explore or launch live demos directly.
+      </p>
+      <div class="hero-instructions" data-en="Hover or click any book to inspect · Direct 1-click links to live demos &amp; source code" data-he="רחפו או לחצו על כל ספר כדי לשלוף אותו · גישה ישירה בלחיצה אחת להדגמות ולקוד המקור">
+        Hover or click any book to inspect · Direct 1-click links to live demos &amp; source code
+      </div>
+    </section>
 
-  <!-- ============================================================= -->
-  <!-- ABOUT                                                         -->
-  <!-- ============================================================= -->
-  <section id="about" class="content-section">
-    <h2 class="shelf-label" data-en="About the Author" data-he="על המחבר">About the Author</h2>
-    <div class="about-card">
-      <p data-en="5 years in Computer Science allowed me to taste many worlds and fall deeply in love with one (or one and a half) of them — and also understand a bit about my own limits and abilities. Content coming soon…"
-         data-he="5 שנים במדעי המחשב איפשרו לי לטעום מלא מעט עולמות ולהתאהב באחד (או אחד וחצי מהם) בצורה קשה, וגם להבין קצת על המגבלות והיכולות שלי. תוכן בקרוב…">5 years in Computer Science allowed me to taste many worlds and fall deeply in love with one (or one and a half) of them — and also understand a bit about my own limits and abilities. Content coming soon…</p>
-    </div>
-  </section>
-
-  <!-- ============================================================= -->
-  <!-- CONTACT                                                       -->
-  <!-- ============================================================= -->
-  <section id="contact" class="content-section">
-    <h2 class="shelf-label" data-en="Contact" data-he="צור קשר">Contact</h2>
-    <ul class="contact-links">
-      <li><a href="https://github.com/davidkorenblit" target="_blank" rel="noopener">GitHub</a></li>
-      <li><a href="https://www.linkedin.com/in/david-korenblit-21a077395/" target="_blank" rel="noopener">LinkedIn</a></li>
-      <li><a href="mailto:dycoren18@gmail.com">dycoren18@gmail.com</a></li>
-      <li><a href="https://wa.me/972586588024" target="_blank" rel="noopener">WhatsApp</a></li>
-    </ul>
-  </section>
-
-  <!-- ============================================================= -->
-  <!-- MODAL — Two-page open-book spread                             -->
-  <!-- ============================================================= -->
-  <div id="book-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-book-title" aria-hidden="true">
-    <div class="open-book">
-      <!-- Close button -->
-      <button id="modal-close" class="modal-close-btn" aria-label="Close">&times;</button>
-
-      <!-- Left page: story -->
-      <article class="page page-left">
-        <h3 id="modal-book-title" class="page-title"></h3>
-        <p id="modal-book-description" class="page-body"></p>
-      </article>
-
-      <!-- Spine crease -->
-      <div class="book-crease" aria-hidden="true"></div>
-
-      <!-- Right page: tech & links -->
-      <article class="page page-right">
-        <h4 class="tech-heading" data-en="Tech Stack" data-he="טכנולוגיות">Tech Stack</h4>
-        <ul id="modal-tech-list" class="tech-badges"></ul>
-        <div class="modal-actions">
-          <a id="modal-link-demo" class="action-btn" href="#" target="_blank" rel="noopener" data-en="Live Demo" data-he="הדגמה חיה">Live Demo</a>
-          <a id="modal-link-repo" class="action-btn" href="#" target="_blank" rel="noopener" data-en="GitHub Repo" data-he="קוד מקור">GitHub Repo</a>
+    <!-- ============================================================= -->
+    <!-- GRAND 3D BOOKCASE                                            -->
+    <!-- ============================================================= -->
+    <main id="bookcase" class="grand-bookcase">
+      
+      <!-- Top Carved Wood Pediment & Arch -->
+      <div class="bookcase-pediment">
+        <div class="pediment-arch">
+          <div class="brass-plaque master-plaque">
+            <span class="plaque-rivet left"></span>
+            <span class="plaque-text" data-en="DAVID KORENBLIT · ARCHIVE &amp; LABORATORY" data-he="דוד קורנבליט · ארכיון ומעבדת פיתוח">DAVID KORENBLIT · ARCHIVE &amp; LABORATORY</span>
+            <span class="plaque-rivet right"></span>
+          </div>
         </div>
-      </article>
-    </div>
-  </div>
+      </div>
+
+      <!-- Wooden Side Pilasters (Columns) for 3D depth -->
+      <div class="bookcase-pillar pillar-left" aria-hidden="true"></div>
+      <div class="bookcase-pillar pillar-right" aria-hidden="true"></div>
+
+      <!-- SHELF I: FEATURED WORKS (Physical 3D Books) -->
+      <section class="shelf-tier" id="featured-shelf-tier">
+        <div class="shelf-header">
+          <div class="shelf-brass-tag">
+            <span class="brass-screw"></span>
+            <span class="shelf-tag-title" data-en="I. FEATURED VOLUMES · MAJOR WORKS" data-he="מדף א׳ · עבודות מובילות">I. FEATURED VOLUMES · MAJOR WORKS</span>
+            <span class="brass-screw"></span>
+          </div>
+        </div>
+
+        <!-- 3D Shelf Alcove (with deep recessed shadow) -->
+        <div class="shelf-alcove">
+          <div class="bookshelf-scene" id="featured-scene">
+            <div class="shelf-row-3d" id="featured-shelf">
+              <!-- Dynamically populated 3D Books injected by script.js -->
+            </div>
+          </div>
+          <!-- Realistic 3D Solid Wood Plank with Bevel and Depth -->
+          <div class="shelf-plank-3d">
+            <div class="plank-top"></div>
+            <div class="plank-front"></div>
+            <div class="plank-shadow"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SHELF II: RESEARCH LAB & EXPERIMENTS (Field Notebooks) -->
+      <section class="shelf-tier" id="lab-shelf-container">
+        <div class="shelf-header">
+          <div class="shelf-brass-tag">
+            <span class="brass-screw"></span>
+            <span class="shelf-tag-title" data-en="II. RESEARCH NOTEBOOKS &amp; PROTOTYPES" data-he="מדף ב׳ · פנקסי מעבדה ומחקר">II. RESEARCH NOTEBOOKS &amp; PROTOTYPES</span>
+            <span class="brass-screw"></span>
+          </div>
+        </div>
+
+        <div class="shelf-alcove">
+          <div class="bookshelf-scene" id="lab-scene">
+            <div class="shelf-row-3d lab-row" id="lab-shelf">
+              <!-- Dynamically populated 3D Notebooks injected by script.js -->
+            </div>
+          </div>
+          <div class="shelf-plank-3d">
+            <div class="plank-top"></div>
+            <div class="plank-front"></div>
+            <div class="plank-shadow"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Base Cabinet & Molding -->
+      <div class="bookcase-base">
+        <div class="base-trim"></div>
+      </div>
+    </main>
+
+    <!-- ============================================================= -->
+    <!-- READING DESK & AUTHOR'S MEMOIR (ספר 0 / About Section)        -->
+    <!-- ============================================================= -->
+    <section id="study-desk" class="study-desk-section">
+      <div class="desk-surface">
+        <div class="desk-mat">
+          <div class="brass-plaque desk-plaque">
+            <span class="brass-screw"></span>
+            <h2 class="plaque-text" data-en="FROM THE AUTHOR'S DESK" data-he="משולחן העבודה של המחבר">FROM THE AUTHOR'S DESK</h2>
+            <span class="brass-screw"></span>
+          </div>
+
+          <div class="open-journal">
+            <!-- Left Page: The Philosophy & Journey -->
+            <article class="journal-page journal-left">
+              <div class="page-corner-fold" aria-hidden="true"></div>
+              <div class="page-chapter-label" data-en="Chapter 0 · The Missing Teammate" data-he="פרק 0 · החבר שחסר לך בצוות">Chapter 0 · The Missing Teammate</div>
+              <h3 class="page-heading" data-en="Bridging Rigor, Curiosity &amp; Code" data-he="חיבור בין חשיבה חדה, סקרנות וקוד">Bridging Rigor, Curiosity &amp; Code</h3>
+              
+              <blockquote class="journal-quote">
+                <span class="quote-mark">“</span>
+                <p data-en="5 years in Computer Science allowed me to taste many worlds and fall deeply in love with one (or one and a half) of them — and also understand a bit about my own limits and abilities."
+                   data-he="5 שנים במדעי המחשב איפשרו לי לטעום מלא מעט עולמות ולהתאהב באחד (או אחד וחצי מהם) בצורה קשה, וגם להבין קצת על המגבלות והיכולות שלי.">
+                  5 years in Computer Science allowed me to taste many worlds and fall deeply in love with one (or one and a half) of them — and also understand a bit about my own limits and abilities.
+                </p>
+              </blockquote>
+
+              <p class="journal-text" data-en="I build data systems where mathematical models meet genuine operational value. Whether quantifying in-game momentum in professional basketball, engineering robust pipelines for under-structured football leagues, or architecting enterprise-grade semantic search agents — I thrive on challenges where off-the-shelf formulas fall short."
+                 data-he="אני בונה מערכות נתונים שבהן מודלים מתמטיים פוגשים ערך מבצעי ומעשי. החל מכימות מומנטום בלייב במשחקי NBA, דרך הנדסת פייפליינים מורכבים לליגות ספורט עם נתונים מפוזרים, ועד לארכיטקטורת צ'אטבוטים וסוכני חיפוש היברידי בענן — אני פורח באתגרים שבהם פתרונות מדף פשוט אינם מספיקים.">
+                I build data systems where mathematical models meet genuine operational value. Whether quantifying in-game momentum in professional basketball, engineering robust pipelines for under-structured football leagues, or architecting enterprise-grade semantic search agents — I thrive on challenges where off-the-shelf formulas fall short.
+              </p>
+            </article>
+
+            <!-- Book Spine Middle Crease -->
+            <div class="journal-spine" aria-hidden="true">
+              <div class="silk-ribbon"></div>
+            </div>
+
+            <!-- Right Page: Competencies & Focus -->
+            <article class="journal-page journal-right">
+              <div class="page-chapter-label" data-en="Technical Competencies" data-he="תחומי התמחות ויכולות">Technical Competencies</div>
+              
+              <div class="skills-ledger">
+                <div class="ledger-row">
+                  <span class="ledger-cat" data-en="Machine Learning &amp; AI" data-he="למידת מכונה ו-AI">Machine Learning &amp; AI</span>
+                  <div class="ledger-tags">
+                    <span>PyTorch</span><span>Causal Inference</span><span>Random Forest</span><span>CLIP / Vision</span><span>BART NLP</span>
+                  </div>
+                </div>
+
+                <div class="ledger-row">
+                  <span class="ledger-cat" data-en="Data Engineering &amp; Analytics" data-he="הנדסת נתונים ואנליטיקה">Data Engineering &amp; Analytics</span>
+                  <div class="ledger-tags">
+                    <span>Python</span><span>Pandas / Polars</span><span>SQL / Vector DB</span><span>API Pipelines</span><span>Interactive Viz</span>
+                  </div>
+                </div>
+
+                <div class="ledger-row">
+                  <span class="ledger-cat" data-en="Cloud &amp; Architecture" data-he="ענן וארכיטקטורת תוכנה">Cloud &amp; Architecture</span>
+                  <div class="ledger-tags">
+                    <span>Azure AI Search</span><span>RAG</span><span>Bicep (IaC)</span><span>C++ (RAII / Box2D)</span><span>Production Readiness</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="journal-signature">
+                <span class="signature-date" data-en="Jerusalem · Tel Aviv" data-he="ירושלים · תל אביב">Jerusalem · Tel Aviv</span>
+                <span class="signature-name">David Korenblit</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- CONTACT & DIRECT DISPATCH                                     -->
+    <!-- ============================================================= -->
+    <section id="contact-station" class="contact-station">
+      <div class="station-inner">
+        <h2 class="station-title" data-en="Direct Communication &amp; Profiles" data-he="יצירת קשר ופרופילים">Direct Communication &amp; Profiles</h2>
+        <p class="station-sub" data-en="Reach out for research collaborations, engineering roles, or consulting." data-he="מוזמנים ליצור קשר לשיתופי פעולה, הצעות עבודה או ייעוץ.">
+          Reach out for research collaborations, engineering roles, or consulting.
+        </p>
+
+        <div class="dispatch-cards">
+          <a href="https://github.com/davidkorenblit" target="_blank" rel="noopener" class="dispatch-card" id="contact-github">
+            <span class="dispatch-icon">💻</span>
+            <div class="dispatch-info">
+              <span class="dispatch-label">GitHub</span>
+              <span class="dispatch-val">@davidkorenblit</span>
+            </div>
+            <span class="dispatch-arrow">↗</span>
+          </a>
+
+          <a href="https://www.linkedin.com/in/david-korenblit-21a077395/" target="_blank" rel="noopener" class="dispatch-card" id="contact-linkedin">
+            <span class="dispatch-icon">💼</span>
+            <div class="dispatch-info">
+              <span class="dispatch-label">LinkedIn</span>
+              <span class="dispatch-val">David Korenblit</span>
+            </div>
+            <span class="dispatch-arrow">↗</span>
+          </a>
+
+          <a href="mailto:dycoren18@gmail.com" class="dispatch-card" id="contact-email">
+            <span class="dispatch-icon">✉️</span>
+            <div class="dispatch-info">
+              <span class="dispatch-label">Email</span>
+              <span class="dispatch-val">dycoren18@gmail.com</span>
+            </div>
+            <span class="dispatch-arrow">↗</span>
+          </a>
+
+          <a href="https://wa.me/972586588024" target="_blank" rel="noopener" class="dispatch-card" id="contact-whatsapp">
+            <span class="dispatch-icon">💬</span>
+            <div class="dispatch-info">
+              <span class="dispatch-label">WhatsApp</span>
+              <span class="dispatch-val">058-6588024</span>
+            </div>
+            <span class="dispatch-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </div> <!-- /library-room -->
 
   <!-- ============================================================= -->
   <!-- FOOTER                                                        -->
   <!-- ============================================================= -->
   <footer id="site-footer">
-    <p>&copy; <span id="footer-year"></span> David Korenblit · <span data-en="All rights reserved" data-he="כל הזכויות שמורות">All rights reserved</span></p>
+    <div class="footer-inner">
+      <p>&copy; <span id="footer-year"></span> David Korenblit · <span data-en="The Library Archive · All Rights Reserved" data-he="הספרייה של דוד · כל הזכויות שמורות">The Library Archive · All Rights Reserved</span></p>
+      <p class="footer-sub" data-en="Designed with craft, depth &amp; authenticity · Zero AI generic gradients" data-he="מעוצב בהקפדה, עומק ואותנטיות · ללא תבניות AI גנריות">Designed with craft, depth &amp; authenticity · Zero AI generic gradients</p>
+    </div>
   </footer>
 
   <script src="script.js"></script>

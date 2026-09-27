@@ -1,33 +1,42 @@
 /* =================================================================
-   David's Library – Portfolio Script
+   David's Library – Grand 3D Study & Portfolio Engine
    Pure Vanilla ES6+. Zero dependencies.
    ================================================================= */
 
 // =====================================================================
-// DATA — pulled directly from the specification document
+// DATA — PULLED DIRECTLY FROM SPECIFICATION
 // =====================================================================
 
-const BOOKS = [
+const FEATURED_BOOKS = [
   {
     id: 0,
     cover: 'mahogany',
-    title:       { en: 'The Missing\nTeammate',        he: 'החבר שחסר\nלך בצוות' },
-    pitch:       { en: '5 years in Computer Science allowed me to taste many worlds and fall deeply in love with one (or one and a half) of them — and also understand a bit about my own limits and abilities.',
-                   he: '5 שנים במדעי המחשב איפשרו לי לטעום מלא מעט עולמות ולהתאהב באחד (או אחד וחצי מהם) בצורה קשה, וגם להבין קצת על המגבלות והיכולות שלי.' },
-    description: { en: 'An autobiographical book about the professional journey, passions and achievements. Timeline and personal chapters to be completed manually.',
-                   he: 'ספר אוטוביוגרפי על הדרך המקצועית, תחומי העניין וההישגים. ציר זמן ופרקים אישיים יושלמו ידנית.' },
-    tech: [],
+    volume: 'VOL. 0',
+    title: {
+      en: 'The Missing Teammate',
+      he: 'החבר שחסר לך בצוות'
+    },
+    pitch: {
+      en: '5 years in Computer Science allowed me to taste many worlds and fall deeply in love with one (or one and a half) of them — and also understand a bit about my own limits and abilities.',
+      he: '5 שנים במדעי המחשב איפשרו לי לטעום מלא מעט עולמות ולהתאהב באחד (או אחד וחצי מהם) בצורה קשה, וגם להבין קצת על המגבלות והיכולות שלי.'
+    },
+    tech: ['Problem Solving', 'Data Systems', 'Algorithms', 'Architecture'],
     demo: '',
-    repo: ''
+    repo: '',
+    isMemoir: true
   },
   {
     id: 1,
     cover: 'oxblood',
-    title:       { en: 'AIAC – NBA\nAnalytics',        he: 'AIAC – NBA\nAnalytics' },
-    pitch:       { en: 'A system that tells the coach he fell asleep on the job — effective at a 32.9% improvement in stopping opponent runs (90-second window), adding ~0.79 points per top-5% shot, and a strategic value of ~3.2 extra wins per season.',
-                   he: 'מערכת שתדע לספר למאמן שהוא נרדם בעמידה – ואפקטיבית בשיפור של 32.9% בעצירת ריצות יריב (חלון של 90 שניות), תוספת של כ-0.79 נקודות לפוזישן בספוטי הקצה, ושווי ערך אסטרטגי של תוספת כ-3.2 ניצחונות בעונה.' },
-    description: { en: 'It\'s frustrating to sit on the couch and scream at the coach "take a timeout already!!!!". So here\'s a system that can tell the coach he fell asleep on the job — effectively improving opponent-run stop-rate by 32.9% (90-second window), adding ~0.79 points per top-5% shot, and a strategic value of ~3.2 extra wins per season.',
-                   he: 'זה מתסכל לשבת על הספה ולצרוח על המאמן (או המסך) \'קח כבר פסק זמן!!!!\'. אז הנה מערכת שתדע לספר למאמן שהוא נרדם בעמידה – ואפקטיבית בשיפור של 32.9% בעצירת ריצות יריב (בחלון של 90 שניות), תוספת של כ-0.79 נקודות לפוזישן בספוטי הקצה (Top 5%), ושווי ערך אסטרטגי של תוספת כ-3.2 ניצחונות בעונה.' },
+    volume: 'VOL. I',
+    title: {
+      en: 'AIAC – NBA Analytics',
+      he: 'AIAC – NBA Analytics'
+    },
+    pitch: {
+      en: 'A system that tells the coach he fell asleep on the job — effective at a 32.9% improvement in stopping opponent runs (90s window), adding ~0.79 points/possession in top-5% spots, and a strategic value of ~3.2 wins/season.',
+      he: 'מערכת שתדע לספר למאמן שהוא נרדם בעמידה – ואפקטיבית בשיפור של 32.9% בעצירת ריצות יריב (בחלון של 90 שניות), תוספת של כ-0.79 נקודות לפוזישן בספוטי הקצה, ושווי ערך של כ-3.2 ניצחונות בעונה.'
+    },
     tech: ['Python', 'PyTorch', 'Causal Inference', 'NBA API', 'Streamlit'],
     demo: 'https://davidkorenblit.github.io/nba-ai-coach-assistant/',
     repo: 'https://github.com/davidkorenblit/nba-ai-coach-assistant'
@@ -35,11 +44,15 @@ const BOOKS = [
   {
     id: 2,
     cover: 'navy',
-    title:       { en: 'WSL\nData Hub',                he: 'WSL\nData Hub' },
-    pitch:       { en: 'Data-engineering pipelines for English women\'s football — analytics and interactive visualisations built on partial, scattered data.',
-                   he: 'צינורות נתונים לניתוח ליגת נשים בכדורגל האנגלית – אנליטיקות וויזואליזציות אינטראקטיביות מדאטא חלקי ומפוזר.' },
-    description: { en: 'I love sports, I love data and I love challenges. All of that together made me take the English Women\'s Super League and try to give analytical predictions on it. It\'s challenging because the data is much more partial and scattered — an excellent opportunity for pipelines that meet reality, and of course to write about sport, which you could also argue I love.',
-                   he: 'אני אוהב ספורט, אני אוהב נתונים ואני אוהב אתגרים. כל זה יחד גרמו לי לקחת את ליגת הנשים בכדורגל האנגלית ולנסות לתת עליה תחזיות אנליטיות. זה מאתגר כי הדאטא חלקי ומפוזר הרבה יותר – הזדמנות מצוינת לפייפליינים שפוגשים את המציאות, וכמובן לכתוב על ספורט, שגם את זה אפשר לטעון שאני אוהב.' },
+    volume: 'VOL. II',
+    title: {
+      en: 'WSL Data Hub',
+      he: 'WSL Data Hub'
+    },
+    pitch: {
+      en: 'Data-engineering pipelines and analytical forecasts for the English Women\'s Super League — turning scattered, partial data into interactive visual insights.',
+      he: 'צינורות נתונים ותחזיות אנליטיות לליגת הנשים האנגלית בכדורגל – הפיכת דאטא חלקי ומפוזר לפייפליינים חיים וויזואליזציות אינטראקטיביות.'
+    },
     tech: ['Data Engineering', 'Python', 'Pandas', 'Sports Analytics', 'Interactive Viz'],
     demo: 'https://davidkorenblit.github.io/wsl-data-hub/',
     repo: 'https://github.com/davidkorenblit/wsl-data-hub'
@@ -47,11 +60,15 @@ const BOOKS = [
   {
     id: 3,
     cover: 'forest',
-    title:       { en: 'Azure AI\nRAG Agent',           he: 'Azure AI\nRAG Agent' },
-    pitch:       { en: 'Secure, production-ready chatbot with automatic document indexing — Azure AI Search, Bicep IaC, Managed Identity.',
-                   he: 'צ\'טבוט מאובטח עם אינדוקס אוטומטי של מסמכים – Azure AI Search, Bicep, Managed Identity.' },
-    description: { en: 'An enterprise chatbot and automatic document-indexing system. Secure, production-ready architecture based on Managed Identity in Azure, Infrastructure-as-Code (Bicep) and Azure AI Search for hybrid semantic search.',
-                   he: 'מערכת צ\'אטבוט ואינדוקס אוטומטי למסמכים ארגוניים. ארכיטקטורה מאובטחת ומוכנה לפרודקשן מבוססת Managed Identity ב-Azure, תשתית כקוד (Bicep) ושירותי Azure AI Search לחיפוש סמנטי היברידי.' },
+    volume: 'VOL. III',
+    title: {
+      en: 'Azure AI RAG Agent',
+      he: 'Azure AI RAG Agent'
+    },
+    pitch: {
+      en: 'Enterprise-grade chatbot and automatic document indexer. Production-ready architecture with Azure Managed Identity, Bicep IaC, and Azure AI Search for hybrid semantic retrieval.',
+      he: 'מערכת צ\'אטבוט ואינדוקס אוטומטי למסמכים ארגוניים. ארכיטקטורה מאובטחת מבוססת Managed Identity ב-Azure, תשתית כקוד (Bicep) ו-Azure AI Search לחיפוש היברידי.'
+    },
     tech: ['Azure AI Search', 'RAG', 'Bicep (IaC)', 'Managed Identity', 'Enterprise AI'],
     demo: '',
     repo: 'https://github.com/davidkorenblit/lab-for-tecktika'
@@ -59,11 +76,15 @@ const BOOKS = [
   {
     id: 4,
     cover: 'cognac',
-    title:       { en: 'C++ Physics\nEngine',           he: 'C++ Physics\nEngine' },
-    pitch:       { en: 'Accurate 2-D vehicle simulation — modular OOP architecture, Box2D physics, RAII memory management.',
-                   he: 'סימולציית רכב דו-ממדית מדויקת – ארכיטקטורה מודולרית, Box2D, ניהול זיכרון RAII.' },
-    description: { en: 'An accurate two-dimensional vehicle simulation written in pure C++. Demonstrates modular, decoupled software architecture (Decoupled Managers), the Box2D physics engine, and meticulous RAII memory management.',
-                   he: 'סימולציית רכב דו-ממדית מדויקת שנכתבה ב-C++ טהור. מדגימה ארכיטקטורת תוכנה מודולרית ומבוזרת (Decoupled Managers), שימוש במנוע הפיזיקה Box2D וניהול זיכרון קפדני (RAII).' },
+    volume: 'VOL. IV',
+    title: {
+      en: 'C++ Physics Engine',
+      he: 'C++ Physics Engine'
+    },
+    pitch: {
+      en: 'Precise 2D vehicle physics simulation in pure C++. Demonstrates decoupled manager architecture, Box2D integration, and strict RAII resource safety.',
+      he: 'סימולציית רכב דו-ממדית מדויקת ב-C++ טהור. ארכיטקטורה מודולרית (Decoupled Managers), מנוע Box2D וניהול זיכרון קפדני (RAII).'
+    },
     tech: ['C++', 'Box2D', 'Physics Simulation', 'RAII', 'OOP Architecture'],
     demo: '',
     repo: 'https://github.com/davidkorenblit/OOP2_Project'
@@ -72,258 +93,288 @@ const BOOKS = [
 
 const LAB_NOTEBOOKS = [
   {
-    id: 'lab-a',
-    title: { en: 'Chess ML\nPredictor', he: 'Chess ML\nPredictor' },
-    pitch: { en: 'ML model for predicting chess game outcomes from historical Chess.com data. (Testing & upgrading)',
-             he: 'מודל ML לחיזוי תוצאות משחקי שחמט מדאטה היסטורי מ-Chess.com. (בשלבי בדיקות)' },
+    id: 'lab-1',
+    volume: 'NOTEBOOK A',
+    title: { en: 'Chess ML Predictor', he: 'Chess ML Predictor' },
+    pitch: {
+      en: 'Machine learning model predicting chess match outcomes from historical Chess.com game archives.',
+      he: 'מודל למידת מכונה לחיזוי תוצאות משחקי שחמט על בסיס דאטה היסטורי מ-Chess.com.'
+    },
     tech: ['Machine Learning', 'Random Forest', 'Chess.com API'],
     repo: 'https://github.com/davidkorenblit/Chess',
     status: 'In Progress'
   },
   {
-    id: 'lab-b',
-    title: { en: 'FPL\nAssistant', he: 'FPL\nAssistant' },
-    pitch: { en: 'Fantasy Premier League analysis — momentum prediction algorithms & optimal captain recommendations. (Advanced dev)',
-             he: 'ניתוח FPL – אלגוריתמי חיזוי מומנטום והמלצות קפטן. (בפיתוח מתקדם)' },
+    id: 'lab-2',
+    volume: 'NOTEBOOK B',
+    title: { en: 'FPL Assistant', he: 'FPL Assistant' },
+    pitch: {
+      en: 'Fantasy Premier League optimization suite: player momentum prediction algorithms and optimal captain recommendations.',
+      he: 'מערכת לניתוח FPL – אלגוריתמי חיזוי מומנטום שחקנים והמלצות קפטן אופטימליות.'
+    },
     tech: ['Python', 'Optimization', 'Sports Analytics'],
     repo: 'https://github.com/davidkorenblit/fpl_assistant',
     status: 'In Progress'
   },
   {
-    id: 'lab-c',
-    title: { en: 'Semantic\nHoops', he: 'Semantic\nHoops' },
-    pitch: { en: 'Semantic video search engine for sports — Computer Vision, CLIP, vector DB for intelligent play retrieval. (Early dev)',
-             he: 'מנוע חיפוש סמנטי לווידאו בספורט – ראייה ממוחשבת, CLIP, מסד וקטורי. (בפיתוח התחלתי)' },
+    id: 'lab-3',
+    volume: 'NOTEBOOK C',
+    title: { en: 'Semantic Hoops', he: 'Semantic Hoops' },
+    pitch: {
+      en: 'Multimodal semantic video search for sports plays using Computer Vision, CLIP embeddings, and vector databases.',
+      he: 'מנוע חיפוש סמנטי לווידאו בספורט – ראייה ממוחשבת, מודל מולטי-מודאלי CLIP ומסד נתונים וקטורי.'
+    },
     tech: ['Computer Vision', 'CLIP', 'Vector DB', 'Video Search'],
     repo: 'https://github.com/davidkorenblit/SemanticHoops',
     status: 'Research'
   },
   {
-    id: 'lab-d',
-    title: { en: 'DailyBite\nNutrition', he: 'DailyBite\nNutrition' },
-    pitch: { en: 'Full-stack platform using Gemini AI to understand nutritionist context and translate it into dynamic daily targets. (Finishing for production)',
-             he: 'פלטפורמה מלאה עם Gemini AI להבנת קונטקסט של המלצות תזונאים. (בפינישים לפרודקשן)' },
-    tech: ['Full-Stack', 'Gemini AI', 'NLP Context'],
+    id: 'lab-4',
+    volume: 'NOTEBOOK D',
+    title: { en: 'DailyBite Nutrition', he: 'DailyBite Nutrition' },
+    pitch: {
+      en: 'Full-stack platform using Gemini AI to parse context from clinical nutrition plans and generate dynamic daily goals.',
+      he: 'פלטפורמה המשתמשת ב-Gemini AI להבנת קונטקסט של המלצות תזונאים ותרגומן ליעדים יומיים דינמיים.'
+    },
+    tech: ['Full-Stack', 'Gemini AI', 'NLP Context', 'Production Ready'],
     repo: 'https://github.com/davidkorenblit/nutrition-tracker',
-    status: 'In Progress'
+    status: 'Finishing'
   },
   {
-    id: 'lab-e',
-    title: { en: 'Tech News\nAI Assistant', he: 'Tech News\nAI Assistant' },
-    pitch: { en: 'Autonomous system for collecting, classifying and summarising tech articles using NLP. (Upgrading)',
-             he: 'מערכת אוטונומית לאיסוף, סיווג ותקצור מאמרי טכנולוגיה באמצעות NLP. (בשדרוג)' },
+    id: 'lab-5',
+    volume: 'NOTEBOOK E',
+    title: { en: 'Tech News AI', he: 'Tech News AI' },
+    pitch: {
+      en: 'Autonomous pipeline for scraping, categorizing, and summarizing tech industry research articles using NLP models.',
+      he: 'מערכת אוטונומית לאיסוף, סיווג ותקצור מאמרי טכנולוגיה וחדשות באמצעות NLP.'
+    },
     tech: ['NLP', 'BART', 'Gemini', 'Scraping'],
     repo: 'https://github.com/davidkorenblit/TechNewsAIAssistant',
-    status: 'Research'
+    status: 'Upgrading'
   }
 ];
 
 // =====================================================================
-// LANGUAGE ENGINE
+// STATE & LANGUAGE
 // =====================================================================
-let lang = 'en';
+let currentLang = 'en';
 
-function setLang(newLang) {
-  lang = newLang;
+function setLanguage(lang) {
+  currentLang = lang;
 
-  // Direction
-  document.documentElement.lang = newLang === 'he' ? 'he' : 'en';
-  document.documentElement.dir  = newLang === 'he' ? 'rtl' : 'ltr';
+  document.documentElement.lang = lang === 'he' ? 'he' : 'en';
+  document.documentElement.dir  = lang === 'he' ? 'rtl' : 'ltr';
 
-  // Toggle active button
-  document.getElementById('btn-lang-en').classList.toggle('active', newLang === 'en');
-  document.getElementById('btn-lang-he').classList.toggle('active', newLang === 'he');
-  document.getElementById('btn-lang-en').setAttribute('aria-pressed', newLang === 'en');
-  document.getElementById('btn-lang-he').setAttribute('aria-pressed', newLang === 'he');
+  const btnEn = document.getElementById('btn-lang-en');
+  const btnHe = document.getElementById('btn-lang-he');
+  if (btnEn) btnEn.classList.toggle('active', lang === 'en');
+  if (btnHe) btnHe.classList.toggle('active', lang === 'he');
 
-  // Translate all elements with data-en / data-he
+  // Update static localized nodes
   document.querySelectorAll('[data-en]').forEach(el => {
-    const val = el.getAttribute('data-' + newLang);
-    if (val) el.textContent = val;
+    const text = el.getAttribute('data-' + lang);
+    if (text) {
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        el.placeholder = text;
+      } else {
+        el.textContent = text;
+      }
+    }
   });
 
-  // Re-render shelves to update titles & tooltips
-  renderFeatured();
-  renderLab();
+  // Re-render shelves
+  renderFeaturedBooks();
+  renderLabNotebooks();
 }
 
 // =====================================================================
-// RENDER: Featured Shelf
+// RENDER: FEATURED 3D SHELF
 // =====================================================================
-function renderFeatured() {
+function renderFeaturedBooks() {
   const shelf = document.getElementById('featured-shelf');
+  if (!shelf) return;
   shelf.innerHTML = '';
 
-  BOOKS.forEach(book => {
-    const el = document.createElement('div');
-    el.className = 'book';
-    el.dataset.cover = book.cover;
-    el.setAttribute('role', 'button');
-    el.setAttribute('tabindex', '0');
-    el.setAttribute('aria-label', book.title[lang].replace('\n', ' '));
+  FEATURED_BOOKS.forEach((book, index) => {
+    const bookEl = document.createElement('div');
+    bookEl.className = 'book-3d' + (index === FEATURED_BOOKS.length - 1 ? ' leaning-book' : '');
+    bookEl.dataset.cover = book.cover;
+    bookEl.setAttribute('role', 'article');
+    bookEl.setAttribute('tabindex', '0');
 
-    const titleDisplay = book.title[lang].replace('\n', '<br>');
-    const pitchText    = book.pitch[lang];
-    const tagsHTML     = book.tech.map(t => '<span class="tooltip-tag">' + t + '</span>').join('');
+    const titleText = book.title[currentLang];
+    const pitchText = book.pitch[currentLang];
+    const techChips = book.tech.map(t => `<span class="tech-chip">${t}</span>`).join('');
 
-    el.innerHTML =
-      '<div class="book-body">' +
-        '<span class="book-title">' + titleDisplay + '</span>' +
-      '</div>' +
-      '<div class="book-tooltip">' +
-        '<p class="tooltip-pitch">' + pitchText + '</p>' +
-        (tagsHTML ? '<div class="tooltip-tags">' + tagsHTML + '</div>' : '') +
-      '</div>';
+    // Actions block: direct 1-click links
+    let actionsHTML = '';
+    if (book.isMemoir) {
+      const memoirLabel = currentLang === 'he' ? '📖 קרא בארכיון' : '📖 Read Memoir';
+      actionsHTML = `<a href="#study-desk" class="btn-direct-demo">${memoirLabel}</a>`;
+    } else {
+      const demoBtn = book.demo
+        ? `<a href="${book.demo}" target="_blank" rel="noopener" class="btn-direct-demo">🚀 ${currentLang === 'he' ? 'הדגמה חיה ↗' : 'Live Demo ↗'}</a>`
+        : '';
+      const repoBtn = book.repo
+        ? `<a href="${book.repo}" target="_blank" rel="noopener" class="btn-direct-repo">💻 ${currentLang === 'he' ? 'קוד מקור ↗' : 'GitHub ↗'}</a>`
+        : '';
+      actionsHTML = `<div class="dossier-actions">${demoBtn}${repoBtn}</div>`;
+    }
 
-    el.addEventListener('click',    () => openModal(book));
-    el.addEventListener('keydown',  e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(book); } });
+    bookEl.innerHTML = `
+      <!-- 3D Book Spine -->
+      <div class="book-spine" aria-label="${titleText}">
+        <div class="silk-ribbon-tag"></div>
+        <div class="spine-band"></div>
+        <div class="spine-volume">${book.volume}</div>
+        <div class="spine-title-wrap">
+          <span class="spine-title">${titleText}</span>
+        </div>
+        <div class="spine-band"></div>
+      </div>
 
-    shelf.appendChild(el);
+      <!-- Floating Archival Parchment Dossier (Instant 1-Click Access) -->
+      <div class="book-dossier" role="region" aria-label="Book summary">
+        <div class="dossier-header">
+          <span class="dossier-badge">${book.volume}</span>
+          <span class="dossier-badge">${book.cover.toUpperCase()}</span>
+        </div>
+        <h3 class="dossier-title">${titleText}</h3>
+        <p class="dossier-pitch">${pitchText}</p>
+        <div class="dossier-tech">${techChips}</div>
+        ${actionsHTML}
+      </div>
+    `;
+
+    // Direct click on book: if it has a demo, launch it immediately! If memoir, scroll to desk.
+    bookEl.addEventListener('click', (e) => {
+      // Don't intercept if clicking directly on a button/link inside the dossier
+      if (e.target.closest('a')) return;
+
+      if (book.isMemoir) {
+        document.getElementById('study-desk')?.scrollIntoView({ behavior: 'smooth' });
+      } else if (book.demo) {
+        window.open(book.demo, '_blank', 'noopener');
+      } else if (book.repo) {
+        window.open(book.repo, '_blank', 'noopener');
+      }
+    });
+
+    shelf.appendChild(bookEl);
   });
 }
 
 // =====================================================================
-// RENDER: Lab Shelf
+// RENDER: LAB NOTEBOOKS SHELF
 // =====================================================================
-function renderLab() {
+function renderLabNotebooks() {
   const shelf = document.getElementById('lab-shelf');
+  if (!shelf) return;
   shelf.innerHTML = '';
 
   LAB_NOTEBOOKS.forEach(nb => {
-    const el = document.createElement('div');
-    el.className = 'book';
-    el.setAttribute('role', 'button');
-    el.setAttribute('tabindex', '0');
-    el.setAttribute('aria-label', nb.title[lang].replace('\n', ' '));
+    const nbEl = document.createElement('div');
+    nbEl.className = 'book-3d';
+    nbEl.setAttribute('role', 'article');
+    nbEl.setAttribute('tabindex', '0');
 
-    const titleDisplay = nb.title[lang].replace('\n', '<br>');
-    const pitchText    = nb.pitch[lang];
-    const tagsHTML     = nb.tech.map(t => '<span class="tooltip-tag">' + t + '</span>').join('');
+    const titleText = nb.title[currentLang];
+    const pitchText = nb.pitch[currentLang];
+    const techChips = nb.tech.map(t => `<span class="tech-chip">${t}</span>`).join('');
+    const repoLabel = currentLang === 'he' ? 'קוד מקור ב-GitHub ↗' : 'View Source on GitHub ↗';
 
-    el.innerHTML =
-      '<div class="book-body">' +
-        '<span class="notebook-status">' + nb.status + '</span>' +
-        '<span class="book-title">' + titleDisplay + '</span>' +
-      '</div>' +
-      '<div class="book-tooltip">' +
-        '<p class="tooltip-pitch">' + pitchText + '</p>' +
-        '<div class="tooltip-tags">' + tagsHTML + '</div>' +
-      '</div>';
+    nbEl.innerHTML = `
+      <div class="book-spine" aria-label="${titleText}">
+        <div class="notebook-stitch"></div>
+        <div class="spine-band"></div>
+        <div class="notebook-seal">${nb.status}</div>
+        <div class="spine-title-wrap">
+          <span class="spine-title">${titleText}</span>
+        </div>
+        <div class="spine-band"></div>
+      </div>
 
-    el.addEventListener('click',   () => openLabModal(nb));
-    el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLabModal(nb); } });
+      <div class="book-dossier" role="region" aria-label="Research notebook details">
+        <div class="dossier-header">
+          <span class="dossier-badge">${nb.volume}</span>
+          <span class="notebook-seal">${nb.status}</span>
+        </div>
+        <h3 class="dossier-title">${titleText}</h3>
+        <p class="dossier-pitch">${pitchText}</p>
+        <div class="dossier-tech">${techChips}</div>
+        <div class="dossier-actions">
+          <a href="${nb.repo}" target="_blank" rel="noopener" class="btn-direct-demo" style="flex: 1;">
+            💻 ${repoLabel}
+          </a>
+        </div>
+      </div>
+    `;
 
-    shelf.appendChild(el);
+    nbEl.addEventListener('click', (e) => {
+      if (e.target.closest('a')) return;
+      if (nb.repo) window.open(nb.repo, '_blank', 'noopener');
+    });
+
+    shelf.appendChild(nbEl);
   });
 }
 
 // =====================================================================
-// MODAL
+// 3D MOUSE PARALLAX FOR BOOKCASE (PHYSICAL DEPTH)
 // =====================================================================
-const modal       = document.getElementById('book-modal');
-const modalTitle  = document.getElementById('modal-book-title');
-const modalDesc   = document.getElementById('modal-book-description');
-const modalTech   = document.getElementById('modal-tech-list');
-const modalDemo   = document.getElementById('modal-link-demo');
-const modalRepo   = document.getElementById('modal-link-repo');
-const modalClose  = document.getElementById('modal-close');
+function initBookcaseParallax() {
+  const bookcase = document.getElementById('bookcase');
+  if (!bookcase) return;
 
-function openModal(book) {
-  modalTitle.textContent = book.title[lang].replace('\n', ' ');
-  modalDesc.textContent  = book.description[lang];
+  // Only apply tilt on desktop screens
+  if (window.matchMedia('(min-width: 992px)').matches) {
+    window.addEventListener('mousemove', (e) => {
+      const rect = bookcase.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      
+      const mouseX = e.clientX - centerX;
+      const mouseY = e.clientY - centerY;
 
-  // Tech badges
-  modalTech.innerHTML = '';
-  book.tech.forEach(t => {
-    const li = document.createElement('li');
-    li.textContent = t;
-    modalTech.appendChild(li);
-  });
+      // Subtle tilt: max 2.5 degrees for natural architectural weight
+      const rotateY = (mouseX / (window.innerWidth / 2)) * 2.5;
+      const rotateX = -(mouseY / (window.innerHeight / 2)) * 1.5;
 
-  // Links
-  if (book.demo) {
-    modalDemo.href = book.demo;
-    modalDemo.style.display = 'inline-flex';
-  } else {
-    modalDemo.style.display = 'none';
+      bookcase.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
   }
-  if (book.repo) {
-    modalRepo.href = book.repo;
-    modalRepo.style.display = 'inline-flex';
-  } else {
-    modalRepo.style.display = 'none';
-  }
-
-  showModal();
 }
 
-function openLabModal(nb) {
-  modalTitle.textContent = nb.title[lang].replace('\n', ' ');
-  modalDesc.textContent  = nb.pitch[lang];
+// =====================================================================
+// ATMOSPHERIC BANKER'S LAMP TOGGLE
+// =====================================================================
+function initAtmosphereControls() {
+  const lampBtn = document.getElementById('lamp-toggle');
+  if (!lampBtn) return;
 
-  modalTech.innerHTML = '';
-  nb.tech.forEach(t => {
-    const li = document.createElement('li');
-    li.textContent = t;
-    modalTech.appendChild(li);
+  let lampLit = true;
+  lampBtn.addEventListener('click', () => {
+    lampLit = !lampLit;
+    document.body.classList.toggle('warm-glow', lampLit);
+    lampBtn.style.transform = 'scale(0.92)';
+    setTimeout(() => lampBtn.style.transform = '', 150);
   });
-
-  modalDemo.style.display = 'none';
-  if (nb.repo) {
-    modalRepo.href = nb.repo;
-    modalRepo.style.display = 'inline-flex';
-  } else {
-    modalRepo.style.display = 'none';
-  }
-
-  showModal();
 }
 
-function showModal() {
-  modal.classList.add('is-open');
-  modal.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
-  modalClose.focus();
-}
+// =====================================================================
+// INITIALIZATION
+// =====================================================================
+document.addEventListener('DOMContentLoaded', () => {
+  // Footer year
+  const yearEl = document.getElementById('footer-year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-function closeModal() {
-  modal.classList.remove('is-open');
-  modal.setAttribute('aria-hidden', 'true');
-  document.body.style.overflow = '';
-}
+  // Language buttons
+  document.getElementById('btn-lang-en')?.addEventListener('click', () => setLanguage('en'));
+  document.getElementById('btn-lang-he')?.addEventListener('click', () => setLanguage('he'));
 
-// Close on X button
-modalClose.addEventListener('click', closeModal);
-
-// Close on click outside the book
-modal.addEventListener('click', e => {
-  if (e.target === modal) closeModal();
+  // Initial renders
+  setLanguage('en');
+  initBookcaseParallax();
+  initAtmosphereControls();
 });
-
-// Close on Escape
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
-});
-
-// =====================================================================
-// NAVIGATION — smooth scroll
-// =====================================================================
-document.querySelectorAll('#main-nav a').forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    const target = document.querySelector(link.getAttribute('href'));
-    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-});
-
-// =====================================================================
-// LANGUAGE BUTTONS
-// =====================================================================
-document.getElementById('btn-lang-en').addEventListener('click', () => setLang('en'));
-document.getElementById('btn-lang-he').addEventListener('click', () => setLang('he'));
-
-// =====================================================================
-// INIT
-// =====================================================================
-document.getElementById('footer-year').textContent = new Date().getFullYear();
-setLang('en');
