@@ -163,18 +163,27 @@ const LAB_NOTEBOOKS = [
 // =====================================================================
 // STATE & LANGUAGE
 // =====================================================================
-let currentLang = 'en';
+let currentLang = localStorage.getItem('david_library_lang') || 'he';
 
 function setLanguage(lang) {
   currentLang = lang;
+  try {
+    localStorage.setItem('david_library_lang', lang);
+  } catch (e) {}
 
   document.documentElement.lang = lang === 'he' ? 'he' : 'en';
   document.documentElement.dir  = lang === 'he' ? 'rtl' : 'ltr';
 
   const btnEn = document.getElementById('btn-lang-en');
   const btnHe = document.getElementById('btn-lang-he');
-  if (btnEn) btnEn.classList.toggle('active', lang === 'en');
-  if (btnHe) btnHe.classList.toggle('active', lang === 'he');
+  if (btnEn) {
+    btnEn.classList.toggle('active', lang === 'en');
+    btnEn.setAttribute('aria-pressed', lang === 'en');
+  }
+  if (btnHe) {
+    btnHe.classList.toggle('active', lang === 'he');
+    btnHe.setAttribute('aria-pressed', lang === 'he');
+  }
 
   // Update static localized nodes
   document.querySelectorAll('[data-en]').forEach(el => {
@@ -392,22 +401,6 @@ function initBookReaderEvents() {
 }
 
 // =====================================================================
-// ATMOSPHERIC BANKER'S LAMP TOGGLE
-// =====================================================================
-function initAtmosphereControls() {
-  const lampBtn = document.getElementById('lamp-toggle');
-  if (!lampBtn) return;
-
-  let lampLit = true;
-  lampBtn.addEventListener('click', () => {
-    lampLit = !lampLit;
-    document.body.classList.toggle('warm-glow', lampLit);
-    lampBtn.style.transform = 'scale(0.92)';
-    setTimeout(() => lampBtn.style.transform = '', 150);
-  });
-}
-
-// =====================================================================
 // INITIALIZATION
 // =====================================================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -422,7 +415,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Reader event listeners
   initBookReaderEvents();
 
-  // Initial renders
-  setLanguage('en');
-  initAtmosphereControls();
+  // Initial render with saved or default Hebrew language
+  setLanguage(currentLang);
 });
