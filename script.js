@@ -87,7 +87,8 @@ const FEATURED_BOOKS = [
     },
     tech: ['C++', 'Box2D', 'Physics Simulation', 'RAII', 'OOP Architecture'],
     demo: '',
-    repo: 'https://github.com/davidkorenblit/OOP2_Project'
+    repo: 'https://github.com/davidkorenblit/OOP2_Project',
+    cover: 'charcoal'
   }
 ];
 
@@ -95,6 +96,7 @@ const LAB_NOTEBOOKS = [
   {
     id: 'lab-1',
     volume: 'NOTEBOOK A',
+    cover: 'charcoal',
     title: { en: 'Chess ML Predictor', he: 'Chess ML Predictor' },
     pitch: {
       en: 'Machine learning model predicting chess match outcomes from historical Chess.com game archives.',
@@ -107,6 +109,7 @@ const LAB_NOTEBOOKS = [
   {
     id: 'lab-2',
     volume: 'NOTEBOOK B',
+    cover: 'slate',
     title: { en: 'FPL Assistant', he: 'FPL Assistant' },
     pitch: {
       en: 'Fantasy Premier League optimization suite: player momentum prediction algorithms and optimal captain recommendations.',
@@ -119,6 +122,7 @@ const LAB_NOTEBOOKS = [
   {
     id: 'lab-3',
     volume: 'NOTEBOOK C',
+    cover: 'parchment',
     title: { en: 'Semantic Hoops', he: 'Semantic Hoops' },
     pitch: {
       en: 'Multimodal semantic video search for sports plays using Computer Vision, CLIP embeddings, and vector databases.',
@@ -131,6 +135,7 @@ const LAB_NOTEBOOKS = [
   {
     id: 'lab-4',
     volume: 'NOTEBOOK D',
+    cover: 'forest',
     title: { en: 'DailyBite Nutrition', he: 'DailyBite Nutrition' },
     pitch: {
       en: 'Full-stack platform using Gemini AI to parse context from clinical nutrition plans and generate dynamic daily goals.',
@@ -143,6 +148,7 @@ const LAB_NOTEBOOKS = [
   {
     id: 'lab-5',
     volume: 'NOTEBOOK E',
+    cover: 'navy',
     title: { en: 'Tech News AI', he: 'Tech News AI' },
     pitch: {
       en: 'Autonomous pipeline for scraping, categorizing, and summarizing tech industry research articles using NLP models.',
@@ -188,7 +194,7 @@ function setLanguage(lang) {
 }
 
 // =====================================================================
-// RENDER: FEATURED 3D SHELF
+// RENDER: FEATURED 3D SHELF (Clean physical presence, click to open)
 // =====================================================================
 function renderFeaturedBooks() {
   const shelf = document.getElementById('featured-shelf');
@@ -199,27 +205,11 @@ function renderFeaturedBooks() {
     const bookEl = document.createElement('div');
     bookEl.className = 'book-3d' + (index === FEATURED_BOOKS.length - 1 ? ' leaning-book' : '');
     bookEl.dataset.cover = book.cover;
-    bookEl.setAttribute('role', 'article');
+    bookEl.setAttribute('role', 'button');
     bookEl.setAttribute('tabindex', '0');
+    bookEl.setAttribute('aria-label', book.title[currentLang]);
 
     const titleText = book.title[currentLang];
-    const pitchText = book.pitch[currentLang];
-    const techChips = book.tech.map(t => `<span class="tech-chip">${t}</span>`).join('');
-
-    // Actions block: direct 1-click links
-    let actionsHTML = '';
-    if (book.isMemoir) {
-      const memoirLabel = currentLang === 'he' ? '📖 קרא בארכיון' : '📖 Read Memoir';
-      actionsHTML = `<a href="#study-desk" class="btn-direct-demo">${memoirLabel}</a>`;
-    } else {
-      const demoBtn = book.demo
-        ? `<a href="${book.demo}" target="_blank" rel="noopener" class="btn-direct-demo">🚀 ${currentLang === 'he' ? 'הדגמה חיה ↗' : 'Live Demo ↗'}</a>`
-        : '';
-      const repoBtn = book.repo
-        ? `<a href="${book.repo}" target="_blank" rel="noopener" class="btn-direct-repo">💻 ${currentLang === 'he' ? 'קוד מקור ↗' : 'GitHub ↗'}</a>`
-        : '';
-      actionsHTML = `<div class="dossier-actions">${demoBtn}${repoBtn}</div>`;
-    }
 
     bookEl.innerHTML = `
       <!-- 3D Book Spine -->
@@ -232,31 +222,14 @@ function renderFeaturedBooks() {
         </div>
         <div class="spine-band"></div>
       </div>
-
-      <!-- Floating Archival Parchment Dossier (Instant 1-Click Access) -->
-      <div class="book-dossier" role="region" aria-label="Book summary">
-        <div class="dossier-header">
-          <span class="dossier-badge">${book.volume}</span>
-          <span class="dossier-badge">${book.cover.toUpperCase()}</span>
-        </div>
-        <h3 class="dossier-title">${titleText}</h3>
-        <p class="dossier-pitch">${pitchText}</p>
-        <div class="dossier-tech">${techChips}</div>
-        ${actionsHTML}
-      </div>
     `;
 
-    // Direct click on book: if it has a demo, launch it immediately! If memoir, scroll to desk.
-    bookEl.addEventListener('click', (e) => {
-      // Don't intercept if clicking directly on a button/link inside the dossier
-      if (e.target.closest('a')) return;
-
-      if (book.isMemoir) {
-        document.getElementById('study-desk')?.scrollIntoView({ behavior: 'smooth' });
-      } else if (book.demo) {
-        window.open(book.demo, '_blank', 'noopener');
-      } else if (book.repo) {
-        window.open(book.repo, '_blank', 'noopener');
+    // Click to pull out and open book across the screen
+    bookEl.addEventListener('click', () => openGrandBook(book, 'featured'));
+    bookEl.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openGrandBook(book, 'featured');
       }
     });
 
@@ -275,13 +248,12 @@ function renderLabNotebooks() {
   LAB_NOTEBOOKS.forEach(nb => {
     const nbEl = document.createElement('div');
     nbEl.className = 'book-3d';
-    nbEl.setAttribute('role', 'article');
+    nbEl.dataset.cover = nb.cover || 'slate';
+    nbEl.setAttribute('role', 'button');
     nbEl.setAttribute('tabindex', '0');
+    nbEl.setAttribute('aria-label', nb.title[currentLang]);
 
     const titleText = nb.title[currentLang];
-    const pitchText = nb.pitch[currentLang];
-    const techChips = nb.tech.map(t => `<span class="tech-chip">${t}</span>`).join('');
-    const repoLabel = currentLang === 'he' ? 'קוד מקור ב-GitHub ↗' : 'View Source on GitHub ↗';
 
     nbEl.innerHTML = `
       <div class="book-spine" aria-label="${titleText}">
@@ -293,26 +265,14 @@ function renderLabNotebooks() {
         </div>
         <div class="spine-band"></div>
       </div>
-
-      <div class="book-dossier" role="region" aria-label="Research notebook details">
-        <div class="dossier-header">
-          <span class="dossier-badge">${nb.volume}</span>
-          <span class="notebook-seal">${nb.status}</span>
-        </div>
-        <h3 class="dossier-title">${titleText}</h3>
-        <p class="dossier-pitch">${pitchText}</p>
-        <div class="dossier-tech">${techChips}</div>
-        <div class="dossier-actions">
-          <a href="${nb.repo}" target="_blank" rel="noopener" class="btn-direct-demo" style="flex: 1;">
-            💻 ${repoLabel}
-          </a>
-        </div>
-      </div>
     `;
 
-    nbEl.addEventListener('click', (e) => {
-      if (e.target.closest('a')) return;
-      if (nb.repo) window.open(nb.repo, '_blank', 'noopener');
+    nbEl.addEventListener('click', () => openGrandBook(nb, 'lab'));
+    nbEl.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openGrandBook(nb, 'lab');
+      }
     });
 
     shelf.appendChild(nbEl);
@@ -320,29 +280,115 @@ function renderLabNotebooks() {
 }
 
 // =====================================================================
-// 3D MOUSE PARALLAX FOR BOOKCASE (PHYSICAL DEPTH)
+// GRAND OPEN BOOK VIEWER (PULL OUT & SPREAD ACROSS SCREEN)
 // =====================================================================
-function initBookcaseParallax() {
-  const bookcase = document.getElementById('bookcase');
-  if (!bookcase) return;
+function openGrandBook(item, type) {
+  const modal = document.getElementById('book-reader-modal');
+  const bookSpread = document.getElementById('open-book-element');
+  if (!modal || !bookSpread) return;
 
-  // Only apply tilt on desktop screens
-  if (window.matchMedia('(min-width: 992px)').matches) {
-    window.addEventListener('mousemove', (e) => {
-      const rect = bookcase.getBoundingClientRect();
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
-      
-      const mouseX = e.clientX - centerX;
-      const mouseY = e.clientY - centerY;
+  // Set cover color tone on the open book casing
+  bookSpread.dataset.cover = item.cover || 'charcoal';
 
-      // Subtle tilt: max 2.5 degrees for natural architectural weight
-      const rotateY = (mouseX / (window.innerWidth / 2)) * 2.5;
-      const rotateX = -(mouseY / (window.innerHeight / 2)) * 1.5;
+  // Volume & Category Badges
+  const volBadge = document.getElementById('reader-volume-badge');
+  const catBadge = document.getElementById('reader-category-badge');
+  if (volBadge) volBadge.textContent = item.volume || 'VOL.';
+  if (catBadge) {
+    if (type === 'featured') {
+      catBadge.textContent = currentLang === 'he' ? 'כרך ראשי · עבודה מובילה' : 'FEATURED WORK · ARCHIVE';
+    } else {
+      catBadge.textContent = currentLang === 'he' ? `מעבדה ומחקר · ${item.status}` : `RESEARCH LAB · ${item.status}`;
+    }
+  }
 
-      bookcase.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  // Title & Pitch (Left / Primary Page)
+  const titleEl = document.getElementById('reader-book-title');
+  const pitchEl = document.getElementById('reader-book-pitch');
+  if (titleEl) titleEl.textContent = item.title[currentLang];
+  if (pitchEl) pitchEl.textContent = item.pitch[currentLang];
+
+  // Tech stack chips (Right / Secondary Page)
+  const techStackEl = document.getElementById('reader-tech-stack');
+  if (techStackEl) {
+    techStackEl.innerHTML = '';
+    (item.tech || []).forEach(t => {
+      const chip = document.createElement('span');
+      chip.className = 'reader-tech-chip';
+      chip.textContent = t;
+      techStackEl.appendChild(chip);
     });
   }
+
+  // Buttons & Actions
+  const btnDemo   = document.getElementById('reader-btn-demo');
+  const btnRepo   = document.getElementById('reader-btn-repo');
+  const btnMemoir = document.getElementById('reader-btn-memoir');
+
+  if (item.isMemoir) {
+    if (btnDemo) btnDemo.style.display = 'none';
+    if (btnRepo) btnRepo.style.display = 'none';
+    if (btnMemoir) {
+      btnMemoir.style.display = 'inline-flex';
+      btnMemoir.onclick = () => {
+        closeGrandBook();
+        document.getElementById('study-desk')?.scrollIntoView({ behavior: 'smooth' });
+      };
+    }
+  } else {
+    if (btnMemoir) btnMemoir.style.display = 'none';
+
+    if (btnDemo) {
+      if (item.demo) {
+        btnDemo.href = item.demo;
+        btnDemo.style.display = 'inline-flex';
+      } else {
+        btnDemo.style.display = 'none';
+      }
+    }
+
+    if (btnRepo) {
+      if (item.repo) {
+        btnRepo.href = item.repo;
+        btnRepo.style.display = 'inline-flex';
+      } else {
+        btnRepo.style.display = 'none';
+      }
+    }
+  }
+
+  // Open with smooth class trigger
+  modal.classList.add('is-open');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+
+  // Auto focus close button for accessibility
+  document.getElementById('reader-close-btn')?.focus();
+}
+
+function closeGrandBook() {
+  const modal = document.getElementById('book-reader-modal');
+  if (!modal) return;
+  modal.classList.remove('is-open');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+// Setup Reader Controls
+function initBookReaderEvents() {
+  const modal = document.getElementById('book-reader-modal');
+  const closeBtn = document.getElementById('reader-close-btn');
+  const backdrop = document.getElementById('reader-backdrop');
+
+  closeBtn?.addEventListener('click', closeGrandBook);
+  backdrop?.addEventListener('click', closeGrandBook);
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal && modal.classList.contains('is-open')) {
+      closeGrandBook();
+    }
+  });
 }
 
 // =====================================================================
@@ -373,8 +419,10 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('btn-lang-en')?.addEventListener('click', () => setLanguage('en'));
   document.getElementById('btn-lang-he')?.addEventListener('click', () => setLanguage('he'));
 
+  // Reader event listeners
+  initBookReaderEvents();
+
   // Initial renders
   setLanguage('en');
-  initBookcaseParallax();
   initAtmosphereControls();
 });

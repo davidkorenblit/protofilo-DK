@@ -72,11 +72,11 @@
         <div class="crest-line"></div>
       </div>
       <h1 data-en="The Private Study &amp; Archive" data-he="חדר הקריאה והארכיון האישי">The Private Study &amp; Archive</h1>
-      <p class="hero-sub" data-en="Data Science, Machine Learning &amp; Software Engineering — pull a book to explore or launch live demos directly." data-he="מדעי נתונים, למידת מכונה והנדסת תוכנה — שלפו ספר לעיון או היכנסו ישירות להדגמות החיות.">
-        Data Science, Machine Learning &amp; Software Engineering — pull a book to explore or launch live demos directly.
+      <p class="hero-sub" data-en="Data Science, Machine Learning &amp; Software Engineering — select a volume to open and explore." data-he="מדעי נתונים, למידת מכונה והנדסת תוכנה — לחצו על ספר לעיון ופתיחת הפרויקט.">
+        Data Science, Machine Learning &amp; Software Engineering — select a volume to open and explore.
       </p>
-      <div class="hero-instructions" data-en="Hover or click any book to inspect · Direct 1-click links to live demos &amp; source code" data-he="רחפו או לחצו על כל ספר כדי לשלוף אותו · גישה ישירה בלחיצה אחת להדגמות ולקוד המקור">
-        Hover or click any book to inspect · Direct 1-click links to live demos &amp; source code
+      <div class="hero-instructions" data-en="Click any book on the shelves to open details &amp; launch live demos" data-he="לחצו על כל ספר במדף לעיון בפרטי הפרויקט והדגמות חיות">
+        Click any book on the shelves to open details &amp; launch live demos
       </div>
     </section>
 
@@ -282,6 +282,94 @@
     </section>
 
   </div> <!-- /library-room -->
+
+  <!-- ============================================================= -->
+  <!-- GRAND OPEN BOOK VIEWER (Full-screen physical book spread)     -->
+  <!-- ============================================================= -->
+  <div id="book-reader-modal" class="book-reader-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="reader-backdrop" id="reader-backdrop"></div>
+    
+    <div class="reader-book-container">
+      <!-- Close button on top-right -->
+      <button class="reader-close-btn" id="reader-close-btn" aria-label="Close book">
+        <span class="close-icon">&times;</span>
+        <span class="close-label" data-en="Close volume (Esc)" data-he="סגור ספר (Esc)">סגור ספר (Esc)</span>
+      </button>
+
+      <!-- The Grand Physical Open Book Spread -->
+      <div class="grand-open-book" id="open-book-element">
+        <!-- Book Leather Casing Edge & Outer Stitching -->
+        <div class="book-casing-corner top-left"></div>
+        <div class="book-casing-corner top-right"></div>
+        <div class="book-casing-corner bottom-left"></div>
+        <div class="book-casing-corner bottom-right"></div>
+
+        <!-- Left Page (Story / Vision) -->
+        <article class="spread-page spread-page-left" id="reader-page-left">
+          <div class="page-inner-content">
+            <div class="page-top-meta">
+              <span class="reader-volume-badge" id="reader-volume-badge">VOL. I</span>
+              <span class="reader-category-badge" id="reader-category-badge">MAJOR WORK</span>
+            </div>
+            <h2 class="reader-book-title" id="reader-book-title">AIAC – NBA Analytics</h2>
+            <div class="reader-gold-divider">
+              <span class="divider-line"></span>
+              <span class="divider-diamond">✦</span>
+              <span class="divider-line"></span>
+            </div>
+            <div class="reader-page-text">
+              <p class="reader-pitch-para" id="reader-book-pitch"></p>
+            </div>
+            <div class="reader-page-footer">
+              <span class="reader-folio-num">I</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Center Spine Crease & Silk Ribbon Bookmark -->
+        <div class="spread-center-spine" aria-hidden="true">
+          <div class="spine-depth-gradient"></div>
+          <div class="spine-silk-ribbon" id="reader-ribbon"></div>
+        </div>
+
+        <!-- Right Page (Tech & Actions) -->
+        <article class="spread-page spread-page-right" id="reader-page-right">
+          <div class="page-inner-content">
+            <div class="page-top-meta">
+              <span class="reader-archive-stamp" data-en="ARCHIVAL DOSSIER" data-he="תיק פרויקט">תיק פרויקט</span>
+            </div>
+
+            <h3 class="reader-section-heading" data-en="Architectural Stack &amp; Tools" data-he="ארכיטקטורה וטכנולוגיות">
+              ארכיטקטורה וטכנולוגיות
+            </h3>
+
+            <div class="reader-tech-stack" id="reader-tech-stack">
+              <!-- Dynamically populated chips -->
+            </div>
+
+            <div class="reader-action-box" id="reader-action-box">
+              <a id="reader-btn-demo" class="reader-btn reader-btn-primary" href="#" target="_blank" rel="noopener">
+                <span class="btn-icon">🚀</span>
+                <span class="btn-text" data-en="Launch Live Demo ↗" data-he="הדגמה חיה ↗">הדגמה חיה ↗</span>
+              </a>
+              <a id="reader-btn-repo" class="reader-btn reader-btn-secondary" href="#" target="_blank" rel="noopener">
+                <span class="btn-icon">💻</span>
+                <span class="btn-text" data-en="Inspect Source Code ↗" data-he="קוד מקור ב-GitHub ↗">קוד מקור ב-GitHub ↗</span>
+              </a>
+              <button id="reader-btn-memoir" class="reader-btn reader-btn-memoir" style="display: none;">
+                <span class="btn-icon">📜</span>
+                <span class="btn-text" data-en="Proceed to Author's Desk ↓" data-he="מעבר לשולחן העבודה ↓">מעבר לשולחן העבודה ↓</span>
+              </button>
+            </div>
+
+            <div class="reader-page-footer">
+              <span class="reader-folio-num">II</span>
+            </div>
+          </div>
+        </article>
+      </div> <!-- /grand-open-book -->
+    </div> <!-- /reader-book-container -->
+  </div> <!-- /book-reader-overlay -->
 
   <!-- ============================================================= -->
   <!-- FOOTER                                                        -->
