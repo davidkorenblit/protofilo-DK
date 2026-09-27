@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>David's Library – Portfolio</title>
+  <meta name="description" content="Personal portfolio presented as a warm, library‑styled bookshelf of projects and research notebooks.">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Header ---------------------------------------------------------- -->
+  <header id="site-header" class="header">
+    <div class="logo">
+      <span class="icon">📚</span> <span class="title" data-en="David's Library" data-he="הספרייה של דוד"></span>
+    </div>
+    <nav class="nav">
+      <ul>
+        <li><a href="#" data-section="featured" data-en="Featured" data-he="בולטים"></a></li>
+        <li><a href="#" data-section="lab" data-en="Lab" data-he="מעבדה"></a></li>
+        <li><a href="#" data-section="about" data-en="About" data-he="אודות"></a></li>
+        <li><a href="#" data-section="contact" data-en="Contact" data-he="צור קשר"></a></li>
+        <li class="lang-switcher">
+          <button id="lang-en" aria-label="Switch to English">EN</button>
+          <button id="lang-he" aria-label="Switch to Hebrew">HE</button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content ---------------------------------------------------- -->
+  <main id="main-content">
+    <!-- Featured Shelf ------------------------------------------------ -->
+    <section id="featured" class="shelf-section">
+      <h2 class="section-title" data-en="Featured Works" data-he="עבודות מובילות"></h2>
+      <div class="shelf" id="bookshelf"></div>
+    </section>
+
+    <!-- Lab Shelf ------------------------------------------------------ -->
+    <section id="lab" class="shelf-section" hidden>
+      <h2 class="section-title" data-en="Lab Notebooks" data-he="פנקסי מחקר"></h2>
+      <div class="shelf" id="lab-shelf"></div>
+    </section>
+
+    <!-- About ---------------------------------------------------------- -->
+    <section id="about" class="shelf-section" hidden>
+      <h2 class="section-title" data-en="About Me" data-he="אודות"></h2>
+      <p class="about-text" data-en="Professional summary goes here…" data-he="סיכום מקצועי כאן…"></p>
+    </section>
+
+    <!-- Contact -------------------------------------------------------- -->
+    <section id="contact" class="shelf-section" hidden>
+      <h2 class="section-title" data-en="Contact" data-he="צור קשר"></h2>
+      <ul class="contact-list">
+        <li>GitHub: <a href="https://github.com/davidkorenblit" target="_blank">davidkorenblit</a></li>
+        <li>LinkedIn: <a href="https://www.linkedin.com/in/david-korenblit-21a077395/" target="_blank">david‑korenblit</a></li>
+        <li>Email: <a href="mailto:dycoren18@gmail.com">dycoren18@gmail.com</a></li>
+        <li>WhatsApp: <a href="tel:+972586588024">+972‑58‑658‑8024</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Modal for Book Details ------------------------------------------ -->
+  <div id="book-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title" hidden>
+    <div class="modal-content" role="document">
+      <button class="modal-close" aria-label="Close modal">&times;</button>
+      <div class="modal-pages">
+        <div class="modal-page left" id="modal-left">
+          <h3 id="modal-title"></h3>
+          <p id="modal-description"></p>
+        </div>
+        <div class="modal-page right" id="modal-right">
+          <h4 data-en="Tech Stack" data-he="טכנולוגיות"></h4>
+          <ul id="modal-tech" class="tech-list"></ul>
+          <div class="modal-links">
+            <a id="modal-demo" href="#" target="_blank" class="button" data-en="Live Demo" data-he="הדגמה חיה"></a>
+            <a id="modal-repo" href="#" target="_blank" class="button" data-en="GitHub Repo" data-he="קוד מקור"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer ---------------------------------------------------------- -->
+  <footer class="footer">
+    <p>&copy; <span id="current-year"></span> David Korenblit – <span data-en="All rights reserved" data-he="כל הזכויות שמורות"></span></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

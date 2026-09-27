@@ -1,0 +1,224 @@
+/* ---------------------------------------------------------------
+   David's Library – Portfolio Styles
+   Theme: Warm library ambience – walnut, oak, mahogany, brass, ivory.
+   No generic AI gradients. Pure vanilla CSS with custom properties.
+   --------------------------------------------------------------- */
+
+:root {
+  /* Core palette */
+  --color-wood-walnut: #4b3621;      /* deep walnut */
+  --color-wood-oak: #8b5e3c;        /* warm oak */
+  --color-wood-mahogany: #3b1f2b;   /* dark mahogany */
+  --color-amber-glow: #e6b800;      /* warm amber */
+  --color-oxblood: #580c0c;        /* leather oxblood */
+  --color-midnight-navy: #001f3f;   /* deep navy */
+  --color-forest-green: #0b4f2e;    /* British forest green */
+  --color-cognac: #a45a35;          /* cognac leather */
+  --color-ivory: #f8f4e3;           /* archival ivory */
+  --color-brass: #b08d57;           /* aged brass */
+
+  --font-primary: 'Inter', Arial, Helvetica, sans-serif;
+  --font-mono: 'Courier New', monospace;
+
+  --spacing-unit: 1rem;
+  --border-radius: 4px;
+}
+
+/* Global resets */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-primary);
+  line-height: 1.5;
+  background: var(--color-ivory);
+  color: #212529;
+}
+
+body {
+  padding: var(--spacing-unit);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+a {
+  color: var(--color-oxblood);
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-wood-walnut);
+  padding: calc(var(--spacing-unit) / 2) var(--spacing-unit);
+  color: #fff;
+  border-radius: var(--border-radius);
+}
+.header .logo {
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.header .nav ul {
+  list-style: none;
+  display: flex;
+  gap: var(--spacing-unit);
+  align-items: center;
+}
+.header .nav a {
+  color: #fff;
+  font-weight: 500;
+}
+.header .nav a:hover { opacity: 0.85; }
+.lang-switcher button {
+  background: var(--color-amber-glow);
+  border: none;
+  color: #000;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: bold;
+}
+.lang-switcher button.active { background: var(--color-brass); }
+
+/* Shelf sections */
+.shelf-section {
+  margin-top: calc(var(--spacing-unit) * 2);
+}
+.section-title {
+  font-size: 1.75rem;
+  margin-bottom: var(--spacing-unit);
+  color: var(--color-wood-mahogany);
+  position: relative;
+}
+.section-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 3rem;
+  height: 3px;
+  background: var(--color-brass);
+}
+
+/* Book shelf grid */
+.shelf {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: var(--spacing-unit);
+  perspective: 1000px; /* for 3D hover */
+}
+.book {
+  background: var(--color-wood-oak);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+.book:hover {
+  transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.25);
+}
+.book .spine {
+  background: var(--color-oxblood);
+  color: #fff;
+  padding: 0.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+.book .cover {
+  background: var(--color-ivory);
+  padding: 1rem;
+  color: #212529;
+  text-align: center;
+}
+.book .cover h3 {
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+.book .cover p {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: var(--spacing-unit);
+}
+.modal-content {
+  background: var(--color-wood-walnut);
+  color: #fff;
+  max-width: 800px;
+  width: 100%;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.modal-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.modal-pages {
+  display: flex;
+  flex-direction: row;
+}
+.modal-page {
+  flex: 1;
+  padding: var(--spacing-unit);
+}
+.modal-page.left { background: var(--color-ivory); color: #212529; }
+.modal-page.right { background: var(--color-wood-oak); }
+.modal-page h3, .modal-page h4 { margin-bottom: 0.5rem; }
+.tech-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tech-list li { background: var(--color-brass); color: #000; padding: 0.25rem 0.5rem; border-radius: var(--border-radius); font-size: 0.85rem; }
+.button {
+  display: inline-block;
+  background: var(--color-amber-glow);
+  color: #000;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  margin-right: 0.5rem;
+  font-weight: bold;
+}
+.button:hover { background: var(--color-brass); }
+
+/* Footer */
+.footer {
+  margin-top: auto;
+  text-align: center;
+  padding: var(--spacing-unit);
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .header { flex-direction: column; align-items flex-start; }
+  .shelf { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+  .modal-pages { flex-direction: column; }
+}
