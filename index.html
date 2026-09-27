@@ -4,85 +4,133 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>David's Library – Portfolio</title>
-  <meta name="description" content="Personal portfolio presented as a warm, library‑styled bookshelf of projects and research notebooks.">
+  <meta name="description" content="David Korenblit's portfolio — a warm, library-styled bookshelf of data-science projects and research notebooks." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Header ---------------------------------------------------------- -->
-  <header id="site-header" class="header">
-    <div class="logo">
-      <span class="icon">📚</span> <span class="title" data-en="David's Library" data-he="הספרייה של דוד"></span>
+
+  <!-- ============================================================= -->
+  <!-- HEADER                                                        -->
+  <!-- ============================================================= -->
+  <header id="site-header">
+    <div class="header-inner">
+      <a href="#" class="logo" aria-label="Home">
+        <span class="logo-icon" aria-hidden="true">📖</span>
+        <span class="logo-text" data-en="David's Library" data-he="הספרייה של דוד">David's Library</span>
+      </a>
+
+      <nav id="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="#featured" data-en="Featured" data-he="עבודות מובילות">Featured</a></li>
+          <li><a href="#lab" data-en="Lab" data-he="מעבדה">Lab</a></li>
+          <li><a href="#about" data-en="About" data-he="אודות">About</a></li>
+          <li><a href="#contact" data-en="Contact" data-he="צור קשר">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="lang-toggle" role="radiogroup" aria-label="Language">
+        <button id="btn-lang-en" class="lang-btn active" aria-pressed="true">EN</button>
+        <button id="btn-lang-he" class="lang-btn" aria-pressed="false">עב</button>
+      </div>
     </div>
-    <nav class="nav">
-      <ul>
-        <li><a href="#" data-section="featured" data-en="Featured" data-he="בולטים"></a></li>
-        <li><a href="#" data-section="lab" data-en="Lab" data-he="מעבדה"></a></li>
-        <li><a href="#" data-section="about" data-en="About" data-he="אודות"></a></li>
-        <li><a href="#" data-section="contact" data-en="Contact" data-he="צור קשר"></a></li>
-        <li class="lang-switcher">
-          <button id="lang-en" aria-label="Switch to English">EN</button>
-          <button id="lang-he" aria-label="Switch to Hebrew">HE</button>
-        </li>
-      </ul>
-    </nav>
   </header>
 
-  <!-- Main Content ---------------------------------------------------- -->
-  <main id="main-content">
-    <!-- Featured Shelf ------------------------------------------------ -->
-    <section id="featured" class="shelf-section">
-      <h2 class="section-title" data-en="Featured Works" data-he="עבודות מובילות"></h2>
-      <div class="shelf" id="bookshelf"></div>
-    </section>
+  <!-- ============================================================= -->
+  <!-- HERO — ambient desk-lamp glow                                 -->
+  <!-- ============================================================= -->
+  <section id="hero">
+    <div class="lamp" aria-hidden="true"></div>
+    <h1 data-en="Welcome to the Library" data-he="ברוכים הבאים לספרייה">Welcome to the Library</h1>
+    <p class="hero-sub" data-en="Projects, research & the story behind them — presented as books on a shelf." data-he="פרויקטים, מחקר והסיפור שמאחוריהם — מוצגים כספרים על מדף.">Projects, research &amp; the story behind them — presented as books on a shelf.</p>
+  </section>
 
-    <!-- Lab Shelf ------------------------------------------------------ -->
-    <section id="lab" class="shelf-section" hidden>
-      <h2 class="section-title" data-en="Lab Notebooks" data-he="פנקסי מחקר"></h2>
-      <div class="shelf" id="lab-shelf"></div>
-    </section>
-
-    <!-- About ---------------------------------------------------------- -->
-    <section id="about" class="shelf-section" hidden>
-      <h2 class="section-title" data-en="About Me" data-he="אודות"></h2>
-      <p class="about-text" data-en="Professional summary goes here…" data-he="סיכום מקצועי כאן…"></p>
-    </section>
-
-    <!-- Contact -------------------------------------------------------- -->
-    <section id="contact" class="shelf-section" hidden>
-      <h2 class="section-title" data-en="Contact" data-he="צור קשר"></h2>
-      <ul class="contact-list">
-        <li>GitHub: <a href="https://github.com/davidkorenblit" target="_blank">davidkorenblit</a></li>
-        <li>LinkedIn: <a href="https://www.linkedin.com/in/david-korenblit-21a077395/" target="_blank">david‑korenblit</a></li>
-        <li>Email: <a href="mailto:dycoren18@gmail.com">dycoren18@gmail.com</a></li>
-        <li>WhatsApp: <a href="tel:+972586588024">+972‑58‑658‑8024</a></li>
-      </ul>
-    </section>
-  </main>
-
-  <!-- Modal for Book Details ------------------------------------------ -->
-  <div id="book-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title" hidden>
-    <div class="modal-content" role="document">
-      <button class="modal-close" aria-label="Close modal">&times;</button>
-      <div class="modal-pages">
-        <div class="modal-page left" id="modal-left">
-          <h3 id="modal-title"></h3>
-          <p id="modal-description"></p>
-        </div>
-        <div class="modal-page right" id="modal-right">
-          <h4 data-en="Tech Stack" data-he="טכנולוגיות"></h4>
-          <ul id="modal-tech" class="tech-list"></ul>
-          <div class="modal-links">
-            <a id="modal-demo" href="#" target="_blank" class="button" data-en="Live Demo" data-he="הדגמה חיה"></a>
-            <a id="modal-repo" href="#" target="_blank" class="button" data-en="GitHub Repo" data-he="קוד מקור"></a>
-          </div>
-        </div>
+  <!-- ============================================================= -->
+  <!-- FEATURED SHELF                                                -->
+  <!-- ============================================================= -->
+  <section id="featured" class="shelf-section">
+    <h2 class="shelf-label" data-en="Featured Works" data-he="עבודות מובילות">Featured Works</h2>
+    <div class="bookcase">
+      <div class="shelf-row" id="featured-shelf">
+        <!-- Books injected by JS -->
       </div>
+      <div class="shelf-plank" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- LAB SHELF                                                     -->
+  <!-- ============================================================= -->
+  <section id="lab" class="shelf-section lab-section">
+    <h2 class="shelf-label" data-en="Lab Notebooks" data-he="פנקסי מחקר">Lab Notebooks</h2>
+    <div class="bookcase">
+      <div class="shelf-row" id="lab-shelf">
+        <!-- Notebooks injected by JS -->
+      </div>
+      <div class="shelf-plank" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- ABOUT                                                         -->
+  <!-- ============================================================= -->
+  <section id="about" class="content-section">
+    <h2 class="shelf-label" data-en="About the Author" data-he="על המחבר">About the Author</h2>
+    <div class="about-card">
+      <p data-en="5 years in Computer Science allowed me to taste many worlds and fall deeply in love with one (or one and a half) of them — and also understand a bit about my own limits and abilities. Content coming soon…"
+         data-he="5 שנים במדעי המחשב איפשרו לי לטעום מלא מעט עולמות ולהתאהב באחד (או אחד וחצי מהם) בצורה קשה, וגם להבין קצת על המגבלות והיכולות שלי. תוכן בקרוב…">5 years in Computer Science allowed me to taste many worlds and fall deeply in love with one (or one and a half) of them — and also understand a bit about my own limits and abilities. Content coming soon…</p>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- CONTACT                                                       -->
+  <!-- ============================================================= -->
+  <section id="contact" class="content-section">
+    <h2 class="shelf-label" data-en="Contact" data-he="צור קשר">Contact</h2>
+    <ul class="contact-links">
+      <li><a href="https://github.com/davidkorenblit" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/david-korenblit-21a077395/" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="mailto:dycoren18@gmail.com">dycoren18@gmail.com</a></li>
+      <li><a href="https://wa.me/972586588024" target="_blank" rel="noopener">WhatsApp</a></li>
+    </ul>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- MODAL — Two-page open-book spread                             -->
+  <!-- ============================================================= -->
+  <div id="book-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-book-title" aria-hidden="true">
+    <div class="open-book">
+      <!-- Close button -->
+      <button id="modal-close" class="modal-close-btn" aria-label="Close">&times;</button>
+
+      <!-- Left page: story -->
+      <article class="page page-left">
+        <h3 id="modal-book-title" class="page-title"></h3>
+        <p id="modal-book-description" class="page-body"></p>
+      </article>
+
+      <!-- Spine crease -->
+      <div class="book-crease" aria-hidden="true"></div>
+
+      <!-- Right page: tech & links -->
+      <article class="page page-right">
+        <h4 class="tech-heading" data-en="Tech Stack" data-he="טכנולוגיות">Tech Stack</h4>
+        <ul id="modal-tech-list" class="tech-badges"></ul>
+        <div class="modal-actions">
+          <a id="modal-link-demo" class="action-btn" href="#" target="_blank" rel="noopener" data-en="Live Demo" data-he="הדגמה חיה">Live Demo</a>
+          <a id="modal-link-repo" class="action-btn" href="#" target="_blank" rel="noopener" data-en="GitHub Repo" data-he="קוד מקור">GitHub Repo</a>
+        </div>
+      </article>
     </div>
   </div>
 
-  <!-- Footer ---------------------------------------------------------- -->
-  <footer class="footer">
-    <p>&copy; <span id="current-year"></span> David Korenblit – <span data-en="All rights reserved" data-he="כל הזכויות שמורות"></span></p>
+  <!-- ============================================================= -->
+  <!-- FOOTER                                                        -->
+  <!-- ============================================================= -->
+  <footer id="site-footer">
+    <p>&copy; <span id="footer-year"></span> David Korenblit · <span data-en="All rights reserved" data-he="כל הזכויות שמורות">All rights reserved</span></p>
   </footer>
 
   <script src="script.js"></script>
