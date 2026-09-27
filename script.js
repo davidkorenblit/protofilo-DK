@@ -34,8 +34,8 @@ const FEATURED_BOOKS = [
       he: 'AIAC – NBA Analytics'
     },
     pitch: {
-      en: 'A system that tells the coach he fell asleep on the job — effective at a 32.9% improvement in stopping opponent runs (90s window), adding ~0.79 points/possession in top-5% spots, and a strategic value of ~3.2 wins/season.',
-      he: 'מערכת שתדע לספר למאמן שהוא נרדם בעמידה – ואפקטיבית בשיפור של 32.9% בעצירת ריצות יריב (בחלון של 90 שניות), תוספת של כ-0.79 נקודות לפוזישן בספוטי הקצה, ושווי ערך של כ-3.2 ניצחונות בעונה.'
+      en: 'It is frustrating to sit on the couch and scream at the coach (or the screen) "Take a timeout already!!!!". So here is a system that tells the coach he fell asleep on the job — effective at a 32.9% improvement in stopping opponent runs (90s window), adding ~0.79 points/possession in top-5% spots, and a strategic value of ~3.2 wins/season.',
+      he: 'זה מתסכל לשבת על הספה ולצרוח על המאמן (או המסך) \'קח כבר פסק זמן!!!!\'. אז הנה מערכת שתדע לספר למאמן שהוא נרדם בעמידה – ואפקטיבית ב-שיפור של 32.9% בעצירת ריצות יריב (בחלון של 90 שניות), תוספת של כ-0.79 נקודות לפוזשן בספוטי הקצה (Top 5%), ושווי ערך אסטרטגי של תוספת כ-3.2 ניצחונות בעונה.'
     },
     tech: ['Python', 'PyTorch', 'Causal Inference', 'NBA API', 'Streamlit'],
     demo: 'https://davidkorenblit.github.io/nba-ai-coach-assistant/',
@@ -50,8 +50,8 @@ const FEATURED_BOOKS = [
       he: 'WSL Data Hub'
     },
     pitch: {
-      en: 'Data-engineering pipelines and analytical forecasts for the English Women\'s Super League — turning scattered, partial data into interactive visual insights.',
-      he: 'צינורות נתונים ותחזיות אנליטיות לליגת הנשים האנגלית בכדורגל – הפיכת דאטא חלקי ומפוזר לפייפליינים חיים וויזואליזציות אינטראקטיביות.'
+      en: 'I love sports, I love data, and I love challenges. All of that together drove me to take the English Women\'s Super League and build analytical forecasts for it. It is challenging because the data is far more fragmented and sparse — a great opportunity for pipelines that meet reality, and of course to write about sports, which one could also claim I love.',
+      he: 'אני אוהב ספורט, אני אוהב נתונים ואני אוהב אתגרים. כל זה יחד גרמו לי לקחת את ליגת הנשים בכדורגל האנגלית ולנסות לתת עליה תחזיות אנליטיות. זה מאתגר כי הדאטא חלקי ומפוזר הרבה יותר – הזדמנות מצוינת לפייפליינים שפוגשים את המציאות, וכמובן לכתוב על ספורט, שגם את זה אפשר לטעון שאני אוהב.'
     },
     tech: ['Data Engineering', 'Python', 'Pandas', 'Sports Analytics', 'Interactive Viz'],
     demo: 'https://davidkorenblit.github.io/wsl-data-hub/',
