@@ -10,6 +10,7 @@
 const FEATURED_BOOKS = [
   {
     id: 0,
+    slug: 'memoir',
     cover: 'mahogany',
     volume: 'VOL. 0',
     title: {
@@ -27,6 +28,7 @@ const FEATURED_BOOKS = [
   },
   {
     id: 1,
+    slug: 'aiac',
     cover: 'oxblood',
     volume: 'VOL. I',
     title: {
@@ -43,6 +45,7 @@ const FEATURED_BOOKS = [
   },
   {
     id: 2,
+    slug: 'wsl',
     cover: 'navy',
     volume: 'VOL. II',
     title: {
@@ -59,6 +62,7 @@ const FEATURED_BOOKS = [
   },
   {
     id: 3,
+    slug: 'azure-rag',
     cover: 'forest',
     volume: 'VOL. III',
     title: {
@@ -75,7 +79,7 @@ const FEATURED_BOOKS = [
   },
   {
     id: 4,
-    cover: 'cognac',
+    slug: 'cpp-physics',
     volume: 'VOL. IV',
     title: {
       en: 'C++ Physics Engine',
@@ -95,6 +99,7 @@ const FEATURED_BOOKS = [
 const LAB_NOTEBOOKS = [
   {
     id: 'lab-1',
+    slug: 'chess-ml',
     volume: 'NOTEBOOK A',
     cover: 'charcoal',
     title: { en: 'Chess ML Predictor', he: 'Chess ML Predictor' },
@@ -108,6 +113,7 @@ const LAB_NOTEBOOKS = [
   },
   {
     id: 'lab-2',
+    slug: 'fpl-assistant',
     volume: 'NOTEBOOK B',
     cover: 'slate',
     title: { en: 'FPL Assistant', he: 'FPL Assistant' },
@@ -121,6 +127,7 @@ const LAB_NOTEBOOKS = [
   },
   {
     id: 'lab-3',
+    slug: 'semantic-hoops',
     volume: 'NOTEBOOK C',
     cover: 'parchment',
     title: { en: 'Semantic Hoops', he: 'Semantic Hoops' },
@@ -134,6 +141,7 @@ const LAB_NOTEBOOKS = [
   },
   {
     id: 'lab-4',
+    slug: 'dailybite',
     volume: 'NOTEBOOK D',
     cover: 'forest',
     title: { en: 'DailyBite Nutrition', he: 'DailyBite Nutrition' },
@@ -147,6 +155,7 @@ const LAB_NOTEBOOKS = [
   },
   {
     id: 'lab-5',
+    slug: 'technews-ai',
     volume: 'NOTEBOOK E',
     cover: 'navy',
     title: { en: 'Tech News AI', he: 'Tech News AI' },
@@ -291,10 +300,42 @@ function renderLabNotebooks() {
 // =====================================================================
 // GRAND OPEN BOOK VIEWER (PULL OUT & SPREAD ACROSS SCREEN)
 // =====================================================================
+let currentReaderList = FEATURED_BOOKS;
+let currentReaderType = 'featured';
+let currentReaderIndex = 0;
+
 function openGrandBook(item, type) {
   const modal = document.getElementById('book-reader-modal');
   const bookSpread = document.getElementById('open-book-element');
   if (!modal || !bookSpread) return;
+
+  // Determine current active list and index
+  currentReaderType = type;
+  currentReaderList = (type === 'featured') ? FEATURED_BOOKS : LAB_NOTEBOOKS;
+  const foundIndex = currentReaderList.findIndex(b => b.slug === item.slug);
+  currentReaderIndex = foundIndex !== -1 ? foundIndex : 0;
+
+  // Update deep-link URL hash smoothly without jump
+  try {
+    if (item.slug) {
+      history.replaceState(null, null, '#' + item.slug);
+    }
+  } catch (e) {}
+
+  // Update Toolbar indicator & buttons
+  const indicator = document.getElementById('reader-toolbar-indicator');
+  const btnPrev = document.getElementById('reader-btn-prev');
+  const btnNext = document.getElementById('reader-btn-next');
+
+  if (indicator) {
+    indicator.textContent = `${currentReaderIndex + 1} / ${currentReaderList.length}`;
+  }
+  if (btnPrev) {
+    btnPrev.disabled = (currentReaderIndex === 0);
+  }
+  if (btnNext) {
+    btnNext.disabled = (currentReaderIndex === currentReaderList.length - 1);
+  }
 
   // Set cover color tone on the open book casing
   bookSpread.dataset.cover = item.cover || 'charcoal';
@@ -375,29 +416,69 @@ function openGrandBook(item, type) {
   document.getElementById('reader-close-btn')?.focus();
 }
 
+function navigateGrandBook(offset) {
+  if (!currentReaderList || currentReaderList.length === 0) return;
+  const targetIndex = currentReaderIndex + offset;
+  if (targetIndex >= 0 && targetIndex < currentReaderList.length) {
+    openGrandBook(currentReaderList[targetIndex], currentReaderType);
+  }
+}
+
 function closeGrandBook() {
   const modal = document.getElementById('book-reader-modal');
   if (!modal) return;
   modal.classList.remove('is-open');
   modal.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
+
+  // Clear hash cleanly
+  try {
+    history.replaceState(null, null, window.location.pathname + window.location.search);
+  } catch (e) {}
 }
 
-// Setup Reader Controls
+// Setup Reader Controls & Keyboard Navigation
 function initBookReaderEvents() {
   const modal = document.getElementById('book-reader-modal');
   const closeBtn = document.getElementById('reader-close-btn');
   const backdrop = document.getElementById('reader-backdrop');
+  const btnPrev = document.getElementById('reader-btn-prev');
+  const btnNext = document.getElementById('reader-btn-next');
 
   closeBtn?.addEventListener('click', closeGrandBook);
   backdrop?.addEventListener('click', closeGrandBook);
+  btnPrev?.addEventListener('click', () => navigateGrandBook(-1));
+  btnNext?.addEventListener('click', () => navigateGrandBook(1));
 
-  // Close on Escape
+  // Keyboard navigation: Escape to close, Arrows to flip between volumes
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal && modal.classList.contains('is-open')) {
+    if (!modal || !modal.classList.contains('is-open')) return;
+
+    if (e.key === 'Escape') {
       closeGrandBook();
+    } else if (e.key === 'ArrowRight') {
+      // In Hebrew RTL: ArrowRight = previous, ArrowLeft = next; in LTR vice-versa
+      navigateGrandBook(currentLang === 'he' ? -1 : 1);
+    } else if (e.key === 'ArrowLeft') {
+      navigateGrandBook(currentLang === 'he' ? 1 : -1);
     }
   });
+}
+
+// Deep Linking Handler (opens book if URL has #slug)
+function handleInitialDeepLink() {
+  const hash = window.location.hash.replace('#', '').toLowerCase();
+  if (!hash) return;
+
+  const featuredMatch = FEATURED_BOOKS.find(b => b.slug.toLowerCase() === hash);
+  if (featuredMatch) {
+    openGrandBook(featuredMatch, 'featured');
+    return;
+  }
+  const labMatch = LAB_NOTEBOOKS.find(b => b.slug.toLowerCase() === hash);
+  if (labMatch) {
+    openGrandBook(labMatch, 'lab');
+  }
 }
 
 // =====================================================================
@@ -417,4 +498,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initial render with saved or default Hebrew language
   setLanguage(currentLang);
+
+  // Deep linking: check URL hash on load
+  handleInitialDeepLink();
 });

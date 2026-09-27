@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=2.2" />
+  <link rel="stylesheet" href="style.css?v=2.3" />
 </head>
 <body>
 
@@ -284,11 +284,25 @@
     <div class="reader-backdrop" id="reader-backdrop"></div>
     
     <div class="reader-book-container">
-      <!-- Close button on top-right -->
-      <button class="reader-close-btn" id="reader-close-btn" aria-label="Close book">
-        <span class="close-icon">&times;</span>
-        <span class="close-label" data-en="Close volume (Esc)" data-he="סגור ספר (Esc)">סגור ספר (Esc)</span>
-      </button>
+      <!-- Top Toolbar: Navigation (Prev / Next) & Close -->
+      <div class="reader-toolbar">
+        <div class="reader-nav-group">
+          <button class="reader-nav-btn" id="reader-btn-prev" aria-label="Previous volume">
+            <span class="nav-arrow">←</span>
+            <span class="nav-label" data-en="Previous Volume" data-he="הכרך הקודם">הכרך הקודם</span>
+          </button>
+          <span class="reader-toolbar-indicator" id="reader-toolbar-indicator">1 / 5</span>
+          <button class="reader-nav-btn" id="reader-btn-next" aria-label="Next volume">
+            <span class="nav-label" data-en="Next Volume" data-he="הכרך הבא">הכרך הבא</span>
+            <span class="nav-arrow">→</span>
+          </button>
+        </div>
+
+        <button class="reader-close-btn" id="reader-close-btn" aria-label="Close book">
+          <span class="close-icon">&times;</span>
+          <span class="close-label" data-en="Close (Esc)" data-he="סגור (Esc)">סגור (Esc)</span>
+        </button>
+      </div>
 
       <!-- The Grand Physical Open Book Spread -->
       <div class="grand-open-book" id="open-book-element">
@@ -375,6 +389,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=2.2"></script>
+  <script src="script.js?v=2.3"></script>
 </body>
 </html>
