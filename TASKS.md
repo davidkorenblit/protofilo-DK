@@ -114,17 +114,45 @@ A curated roadmap for elevating David Korenblit's personal portfolio into a worl
 
 ## 🧭 Section 2: Chapter 0 & The Career Journey Timeline (The Author's Desk)
 
-*Drafting the personal memoir and the milestones for the 5-year journey in Computer Science:*
+*Personal memoir and milestones for the 5-year journey in Computer Science (Author's Notebook):*
 
-### Narrative Arch
-* **The Opening Hook (Preserved):**
-  > *"5 years in Computer Science allowed me to taste many worlds and fall deeply in love with one (or one and a half) of them — and also understand a bit about my own limits and abilities."*
-* **The Transition Point:**
-  From the theoretical rigor of algorithms and academic proofs to the tangible thrill of data systems where models meet genuine operational decisions (basketball coaching boxes, sports leagues, enterprise document repositories).
-* **What Makes David "The Missing Teammate":**
-  1. **Dual Fluency:** Speaks both pure algorithms/math (Causal Inference, physics, vector algebra) and practical production engineering (pipelines, Docker, cloud IaC, C++ RAII).
-  2. **Domain Passion:** Brings infectious enthusiasm to complex, messy data domains where standard recipes fail.
-  3. **Intellectual Honesty:** Knowing one's strengths and limits — focusing on deep problem-solving rather than superficial buzzwords.
+### Full Authentic Narrative (Bilingual)
+
+#### Hebrew Version (עברית):
+> "האמת היא שקשה לי להאמין שמישהו באמת קורא את כל זה עד הסוף, אבל אם הגעתם עד לכאן — מגיע לכם משהו קצת יותר אותנטי מעוד קורות חיים יבשים. בעוד רגע אכנס לקלישאות התאגידיות הרגילות על היכולת שלי לעבוד קשה, ללמוד מהר ולבנות תהליכי עבודה. אבל לפני הבאזווורדס, בואו נדבר על מה שבאמת עומד מאחוריהן.
+>
+> לקח לי חמש שנים לסיים תואר במדעי המחשב. הסיבה שזה לקח חמש שנים במקום שלוש היא שהייתי צריך להשלים את כל פערי הלימודים מאפס, אחרי שנים שהוקדשו כולן ללימוד תורה בישיבה. זה היה עולם עמוק ומעצב בפני עצמו, אבל בנקודה מסוימת הבנתי שאני רוצה וצריך גם כלים נוספים.
+>
+> המעבר הזה — מבית המדרש המסורתי ישירות לסביבה אקדמית הישגית ותחרותית שבה כל צעד נמדד במספרים — לא היה טיול בפארק. זה היה מאבק עיקש. לאורך הדרך, המחזור שלי כמעט והתפרק לגמרי; אנשים מוכשרים נשרו בזה אחר זה מסיבות מובנות, עד שנשארנו רק שניים שחצו את קו הסיום.
+>
+> אז כן, בהמשך תמצאו פסקאות שנשמעות כאילו בינה מלאכותית יצרה אותן על כמה שאני 'חרוץ, ממוקד ומכוון מטרה'. אבל המציאות פשוטה בהרבה: אני פשוט לא מפחד לטעות, לחטוף את המכה וללמוד ממנה. כי בסופו של יום, בלי טעויות אי אפשר באמת להתנסות — ובלי להתנסות, אי אפשר לבנות שום דבר בעל ערך.
+>
+> אני כנראה אהיה זה שבהתחלה ישאל שאלות שאולי יכולות קצת להציק, אבל באותה מידה אדע לעמוד מאחורי מה שהכנתי ולענות על כל שאלה. במהלך התואר התמודדתי בהצלחה עם הצגת פרויקטים (בעברית ובאנגלית) וחידדתי את יכולות ההבעה שלי בשתי השפות. מעבר לרשימת הטכנולוגיות — היכולת שלי 'לסבול' את הזמנים הקשים, להתמודד חזיתית עם האתגרים ולא לברוח מהם, ולקחת אחריות אמיתית על התפקיד ומה שמסביבו, היא מה שתשלים את הצוות שלכם.
+>
+> *(אה, ואני ממש אוהב לקדוח בנתונים ולהבין מהם תובנות. אבל כאילו, ממש אוהב).*
+>
+> **ארגז כלים טכנולוגי וניסיון מעשי:**
+> לאורך התואר ובפרויקטים עצמאיים התמקדתי בתכנון מערכות מקצה לקצה ובצינורות עיבוד נתונים (Data Pipelines). ניסיון מעשי בפיתוח Python עם ספריות Data Science (כגון Pandas, NumPy) לעיבוד, הנדסת פיצ'רים ואנליטיקה, לצד עבודה מול PostgreSQL ואופטימיזציית שאילתות מורכבות.
+>
+> בצד הארכיטקטורה והתשתיות: עבודה שוטפת בסביבות Docker, בניית שירותי Backend רזים ועמידים (FastAPI, Express) ואינטגרציית שירותי ענן. בנוסף, רקע מעשי בתכנות מערכות ופתרון בעיות אלגוריתמיות ב-C++, ראייה ממוחשבת עם OpenCV, ושילוב רכיבי AI מודרניים (Vector Embeddings, RAG, NLP)."
+
+#### English Version:
+> "I honestly find it hard to believe anyone actually reads these all the way through, but if you made it this far—you’ve earned something a bit more authentic than a dry resume. In just a second, I’ll indulge in the usual corporate clichés about my ability to work hard, learn fast, and build learning frameworks across various domains. But before the buzzwords, let’s talk about what actually backs them up.
+>
+> It took me five years to finish a computer science degree. The reason it took five years instead of three is that I had to catch up on high school credentials completely from scratch, having spent the preceding years immersed in full-time Torah study. It was a profound and formative world in its own right, but at a certain point, I realized I wanted and needed other tools as well.
+>
+> That transition—from a traditional study hall to a fiercely achievement-driven academic environment where every single step is evaluated by the numbers—was no walk in the park. It was brutally tough. Along the way, my entire class practically disintegrated; talented people dropped out one by one for their own valid reasons, until only two of us were left to cross the finish line.
+>
+> So yes, you’ll find paragraphs that sound like an AI generated them about how I am 'diligent, driven, and goal-oriented.' But reality is much simpler: I am just not afraid to mess up, take the hit, and learn from it. Because at the end of the day, without making mistakes you can't truly experiment—and without experimenting, you can't build anything of value.
+>
+> I'll likely be the one asking questions early on that might feel a bit probing, but I'll also stand firmly behind my work and answer any question about what I built. Throughout my degree, I successfully presented projects in both English and Hebrew, sharpening my technical communication and presentation skills in both languages. Beyond the tech stack, my ability to endure the grind, confront challenges rather than dodge them, and take real ownership of my role and everything around it is what makes me a complete addition to your team.
+>
+> *(Oh, and I genuinely love drilling into data to unearth insights. Like, really love it).*
+>
+> **Technical Stack & Practical Experience:**
+> Throughout my studies and independent projects, I have focused on end-to-end system design and data-intensive pipelines. Hands-on development experience in Python, leveraging data science libraries (Pandas, NumPy) for data processing, feature engineering, and analytics, alongside relational databases (PostgreSQL) and complex SQL query optimization.
+>
+> On infrastructure and architecture: containerized Docker environments, lightweight and robust backend APIs with FastAPI and Express, and cloud service integration. Practical exposure to systems programming and algorithmic problem-solving in C++, computer vision with OpenCV, and integrating modern AI components (vector embeddings, NLP pipelines, and RAG workflows) into functional applications."
 
 ### Proposed Timeline Stations
 - [ ] **Station 1 · The Academic Crucible:** Laying foundations in discrete mathematics, data structures, and computer architecture.
@@ -159,9 +187,13 @@ A curated roadmap for elevating David Korenblit's personal portfolio into a worl
 - [x] Set default language to Hebrew (`he`) with `localStorage` persistence.
 - [x] Removed confusing "Atmosphere" banker's lamp toggle button.
 - [x] Restored authentic storytelling text for AIAC and WSL from the original specification.
-- [x] Pushed all updates to GitHub (`origin/main`).
+- [x] **Hebrew RTL Page Direction (Book Spread):** Fixed layout in Hebrew: Right Page (first page) = Project title, Volume badge, and main Narrative story; Left Page (second page) = Architecture & skills tags, and GitHub action button.
+- [x] **Desk Plaque & Text Contrast Enhancement:** Fixed text contrast on brass plaques ("משולחן העבודה של המחבר" and master author plaque) with deep dark engraved enamel lettering on polished brass finish.
+- [x] **Book Page Flip Animation:** Implemented 3D physical page-turning transition animation for grand open book navigation.
+- [x] **Author's Personal Notebook Content & Pagination:** Integrated the full authentic bilingual memoir into a two-spread physical notebook with page-turn controls.
+- [x] Pushed updates to GitHub (`origin/main`).
 
-### Upcoming Polish Tasks
-- [ ] Incorporate visual plate placeholders inside the left/right pages for project screenshots.
-- [ ] Build the interactive career timeline inside the Author's Desk section.
-- [ ] Conduct final mobile responsive audit across various mobile device widths.
+### Upcoming Polish & Implementation Tasks
+- [ ] **Visual Plate Placeholders:** Incorporate visual plate placeholders inside the pages for project screenshots (once provided).
+- [ ] **Interactive Career Timeline:** Build the interactive career timeline inside the Author's Desk section.
+- [ ] **Mobile Responsive Audit:** Conduct final mobile responsive audit across various mobile device widths.

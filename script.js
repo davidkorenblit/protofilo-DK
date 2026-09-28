@@ -18,10 +18,10 @@ const FEATURED_BOOKS = [
       he: 'החבר שחסר לך בצוות'
     },
     pitch: {
-      en: '5 years in Computer Science allowed me to taste many worlds and fall deeply in love with one (or one and a half) of them — and also understand a bit about my own limits and abilities.',
-      he: '5 שנים במדעי המחשב איפשרו לי לטעום מלא מעט עולמות ולהתאהב באחד (או אחד וחצי מהם) בצורה קשה, וגם להבין קצת על המגבלות והיכולות שלי.'
+      en: 'It took me 5 years to finish a CS degree, catching up credentials from scratch after full-time yeshiva study. In a brutal crucible where almost the entire class dropped out, I learned never to fear mistakes or the grind. Driven by candor, asking probing questions, and genuine data obsession.',
+      he: 'לקח לי חמש שנים לסיים תואר במדעי המחשב, כשהשלמתי פערי לימודים מאפס אחרי שנים של לימוד תורה בישיבה. במאבק עיקש שבו כמעט כל המחזור נשר, למדתי לא לפחד לטעות, לחטוף את המכה ולצמוח. שאלות מעמיקות, עמידה בלחצים ואהבה אמיתית לדאטה.'
     },
-    tech: ['Problem Solving', 'Data Systems', 'Algorithms', 'Architecture'],
+    tech: ['Python / Data', 'PostgreSQL', 'Docker', 'FastAPI', 'C++ (RAII)', 'RAG & AI'],
     demo: '',
     repo: '',
     isMemoir: true
@@ -420,6 +420,16 @@ function navigateGrandBook(offset) {
   if (!currentReaderList || currentReaderList.length === 0) return;
   const targetIndex = currentReaderIndex + offset;
   if (targetIndex >= 0 && targetIndex < currentReaderList.length) {
+    const bookSpread = document.getElementById('open-book-element');
+    const animationClass = offset > 0 ? 'page-turning-forward' : 'page-turning-backward';
+    if (bookSpread) {
+      bookSpread.classList.remove('page-turning-forward', 'page-turning-backward');
+      void bookSpread.offsetWidth; // Force reflow
+      bookSpread.classList.add(animationClass);
+      setTimeout(() => {
+        bookSpread.classList.remove(animationClass);
+      }, 350);
+    }
     openGrandBook(currentReaderList[targetIndex], currentReaderType);
   }
 }
@@ -465,6 +475,50 @@ function initBookReaderEvents() {
   });
 }
 
+// =====================================================================
+// AUTHOR'S DESK: TWO-SPREAD NOTEBOOK PAGINATION (דפדוף דפים במחברת)
+// =====================================================================
+let currentJournalSpread = 1;
+const TOTAL_JOURNAL_SPREADS = 2;
+
+function setJournalSpread(spreadNum, direction = 'forward') {
+  if (spreadNum < 1 || spreadNum > TOTAL_JOURNAL_SPREADS) return;
+  const spread1 = document.getElementById('journal-spread-1');
+  const spread2 = document.getElementById('journal-spread-2');
+  const indicator = document.getElementById('journal-spread-indicator-num');
+  const btnPrev = document.getElementById('journal-nav-prev');
+  const btnNext = document.getElementById('journal-nav-next');
+  if (!spread1 || !spread2) return;
+
+  const currentEl = spreadNum === 1 ? spread2 : spread1;
+  const targetEl = spreadNum === 1 ? spread1 : spread2;
+
+  currentEl.classList.remove('active', 'flip-forward', 'flip-backward');
+  targetEl.classList.remove('flip-forward', 'flip-backward');
+
+  // Apply 3D page flip animation
+  const flipClass = direction === 'forward' ? 'flip-forward' : 'flip-backward';
+  targetEl.classList.add('active', flipClass);
+
+  currentJournalSpread = spreadNum;
+
+  if (indicator) indicator.textContent = spreadNum;
+  if (btnPrev) btnPrev.disabled = (spreadNum === 1);
+  if (btnNext) btnNext.disabled = (spreadNum === TOTAL_JOURNAL_SPREADS);
+}
+
+function initJournalNotebookEvents() {
+  const btnPrev = document.getElementById('journal-nav-prev');
+  const btnNext = document.getElementById('journal-nav-next');
+  const cornerNext1 = document.getElementById('journal-corner-next-1');
+  const cornerPrev2 = document.getElementById('journal-corner-prev-2');
+
+  btnPrev?.addEventListener('click', () => setJournalSpread(1, 'backward'));
+  btnNext?.addEventListener('click', () => setJournalSpread(2, 'forward'));
+  cornerNext1?.addEventListener('click', () => setJournalSpread(2, 'forward'));
+  cornerPrev2?.addEventListener('click', () => setJournalSpread(1, 'backward'));
+}
+
 // Deep Linking Handler (opens book if URL has #slug)
 function handleInitialDeepLink() {
   const hash = window.location.hash.replace('#', '').toLowerCase();
@@ -495,6 +549,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Reader event listeners
   initBookReaderEvents();
+
+  // Author's Desk Notebook page turn listeners
+  initJournalNotebookEvents();
 
   // Initial render with saved or default Hebrew language
   setLanguage(currentLang);
