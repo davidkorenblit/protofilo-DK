@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=2.4" />
+  <link rel="stylesheet" href="style.css?v=2.5" />
 </head>
 <body>
 
@@ -412,25 +412,10 @@
         <div class="book-casing-corner bottom-left"></div>
         <div class="book-casing-corner bottom-right"></div>
 
-        <!-- Left Page (Story / Vision) -->
+        <!-- Left Page (DOM first child: Right page in Hebrew RTL, Left page in English LTR) -->
         <article class="spread-page spread-page-left" id="reader-page-left">
-          <div class="page-inner-content">
-            <div class="page-top-meta">
-              <span class="reader-volume-badge" id="reader-volume-badge">VOL. I</span>
-              <span class="reader-category-badge" id="reader-category-badge">MAJOR WORK</span>
-            </div>
-            <h2 class="reader-book-title" id="reader-book-title">AIAC – NBA Analytics</h2>
-            <div class="reader-gold-divider">
-              <span class="divider-line"></span>
-              <span class="divider-diamond">✦</span>
-              <span class="divider-line"></span>
-            </div>
-            <div class="reader-page-text">
-              <p class="reader-pitch-para" id="reader-book-pitch"></p>
-            </div>
-            <div class="reader-page-footer">
-              <span class="reader-folio-num">I</span>
-            </div>
+          <div class="page-inner-content" id="reader-page-left-content">
+            <!-- Dynamically populated based on active spread -->
           </div>
         </article>
 
@@ -440,42 +425,37 @@
           <div class="spine-silk-ribbon" id="reader-ribbon"></div>
         </div>
 
-        <!-- Right Page (Tech & Actions) -->
+        <!-- Right Page (DOM second child: Left page in Hebrew RTL, Right page in English LTR) -->
         <article class="spread-page spread-page-right" id="reader-page-right">
-          <div class="page-inner-content">
-            <div class="page-top-meta">
-              <span class="reader-archive-stamp" data-en="ARCHIVAL DOSSIER" data-he="תיק פרויקט">תיק פרויקט</span>
-            </div>
-
-            <h3 class="reader-section-heading" data-en="Architectural Stack &amp; Tools" data-he="ארכיטקטורה וטכנולוגיות">
-              ארכיטקטורה וטכנולוגיות
-            </h3>
-
-            <div class="reader-tech-stack" id="reader-tech-stack">
-              <!-- Dynamically populated chips -->
-            </div>
-
-            <div class="reader-action-box" id="reader-action-box">
-              <a id="reader-btn-demo" class="reader-btn reader-btn-primary" href="#" target="_blank" rel="noopener">
-                <span class="btn-icon">🚀</span>
-                <span class="btn-text" data-en="Launch Live Demo ↗" data-he="הדגמה חיה ↗">הדגמה חיה ↗</span>
-              </a>
-              <a id="reader-btn-repo" class="reader-btn reader-btn-secondary" href="#" target="_blank" rel="noopener">
-                <span class="btn-icon">💻</span>
-                <span class="btn-text" data-en="Inspect Source Code ↗" data-he="קוד מקור ב-GitHub ↗">קוד מקור ב-GitHub ↗</span>
-              </a>
-              <button id="reader-btn-memoir" class="reader-btn reader-btn-memoir" style="display: none;">
-                <span class="btn-icon">📜</span>
-                <span class="btn-text" data-en="Proceed to Author's Desk ↓" data-he="מעבר לשולחן העבודה ↓">מעבר לשולחן העבודה ↓</span>
-              </button>
-            </div>
-
-            <div class="reader-page-footer">
-              <span class="reader-folio-num">II</span>
-            </div>
+          <div class="page-inner-content" id="reader-page-right-content">
+            <!-- Dynamically populated based on active spread -->
           </div>
         </article>
       </div> <!-- /grand-open-book -->
+
+      <!-- Internal Spread Navigation Bar (דפדוף פנימי בין עמודי הכרך) -->
+      <div class="reader-spread-nav-bar" id="reader-spread-nav-bar">
+        <button class="reader-spread-btn" id="reader-spread-prev" aria-label="Previous pages in volume" disabled>
+          <span class="spread-btn-icon">↶</span>
+          <span class="spread-btn-text" data-en="Previous Pages" data-he="העמוד הקודם">העמוד הקודם</span>
+        </button>
+
+        <div class="reader-spread-indicator-wrap">
+          <span class="spread-label" data-en="Spread" data-he="דף">דף</span>
+          <span class="spread-current" id="reader-spread-current">1</span>
+          <span class="spread-sep">/</span>
+          <span class="spread-total" id="reader-spread-total">2</span>
+          <div class="reader-spread-pips" id="reader-spread-pips">
+            <span class="spread-pip active"></span>
+            <span class="spread-pip"></span>
+          </div>
+        </div>
+
+        <button class="reader-spread-btn" id="reader-spread-next" aria-label="Next pages in volume">
+          <span class="spread-btn-text" data-en="Next Pages" data-he="העמוד הבא">העמוד הבא</span>
+          <span class="spread-btn-icon">↷</span>
+        </button>
+      </div>
     </div> <!-- /reader-book-container -->
   </div> <!-- /book-reader-overlay -->
 
@@ -485,10 +465,9 @@
   <footer id="site-footer">
     <div class="footer-inner">
       <p>&copy; <span id="footer-year"></span> David Korenblit · <span data-en="The Library Archive · All Rights Reserved" data-he="הספרייה של דוד · כל הזכויות שמורות">The Library Archive · All Rights Reserved</span></p>
-      <p class="footer-sub" data-en="Designed with craft, depth &amp; authenticity · Zero AI generic gradients" data-he="מעוצב בהקפדה, עומק ואותנטיות · ללא תבניות AI גנריות">Designed with craft, depth &amp; authenticity · Zero AI generic gradients</p>
     </div>
   </footer>
 
-  <script src="script.js?v=2.4"></script>
+  <script src="script.js?v=2.5"></script>
 </body>
 </html>

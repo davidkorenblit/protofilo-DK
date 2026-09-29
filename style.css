@@ -1192,8 +1192,12 @@ body.warm-glow .lamp-beam {
 }
 
 .reader-page-footer {
-  text-align: center;
-  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.2rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(184, 151, 88, 0.2);
 }
 
 .reader-folio-num {
@@ -1201,6 +1205,193 @@ body.warm-glow .lamp-beam {
   font-size: 0.8rem;
   color: #8c7653;
   letter-spacing: 0.15em;
+}
+
+/* Internal Spread Navigation Bar (דפדוף פנימי בין עמודי הכרך) */
+.reader-spread-nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.25rem;
+  padding: 0.6rem 1.4rem;
+  background: rgba(18, 10, 6, 0.92);
+  border: 1px solid rgba(184, 151, 88, 0.45);
+  border-radius: 30px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.75);
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+.reader-spread-btn {
+  background: rgba(43, 23, 10, 0.95);
+  color: #f7ecd7;
+  border: 1px solid rgba(184, 151, 88, 0.5);
+  border-radius: 20px;
+  padding: 0.45rem 1.1rem;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.25s ease;
+}
+
+.reader-spread-btn:hover:not(:disabled) {
+  background: #5c3014;
+  border-color: #ffd67a;
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.reader-spread-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  border-color: rgba(184, 151, 88, 0.2);
+}
+
+.reader-spread-indicator-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #ebd9b5;
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.reader-spread-pips {
+  display: flex;
+  gap: 6px;
+  margin-inline-start: 0.6rem;
+}
+
+.spread-pip {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(184, 151, 88, 0.3);
+  border: 1px solid rgba(184, 151, 88, 0.5);
+  transition: all 0.25s;
+}
+
+.spread-pip.active {
+  background: var(--gold-foil);
+  box-shadow: 0 0 8px rgba(224, 186, 104, 0.8);
+  transform: scale(1.2);
+}
+
+/* In-Page Corner Turn Link / Button */
+.reader-corner-turn-btn {
+  background: transparent;
+  border: none;
+  color: var(--brass-dark);
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 800;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-bottom: 1px dashed var(--brass);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.2s ease;
+}
+
+.reader-corner-turn-btn:hover {
+  color: #120601;
+  border-bottom-style: solid;
+  transform: translateY(-1px);
+}
+
+/* Deep Architecture & Engineering Layout Styles */
+.reader-arch-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 0.85rem 0;
+}
+
+.reader-arch-step {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  background: rgba(184, 151, 88, 0.08);
+  border-right: 3px solid var(--brass);
+  padding: 0.6rem 0.8rem;
+  border-radius: 3px;
+}
+
+[dir="ltr"] .reader-arch-step {
+  border-right: none;
+  border-left: 3px solid var(--brass);
+}
+
+.reader-step-badge {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #fff;
+  background: #3a1e12;
+  border: 1px solid var(--brass);
+  border-radius: 3px;
+  padding: 0.15rem 0.45rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.reader-step-desc {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: #2b231c;
+}
+
+.reader-step-desc strong {
+  color: #160e08;
+}
+
+.reader-insight-highlight {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin: 1rem 0;
+  padding: 0.85rem 1rem;
+  background: rgba(184, 151, 88, 0.14);
+  border: 1px dashed rgba(184, 151, 88, 0.6);
+  border-radius: 4px;
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-style: italic;
+  font-weight: 600;
+  color: #2b1809;
+  line-height: 1.55;
+}
+
+.reader-insight-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.reader-resilience-box {
+  margin-top: 0.85rem;
+  padding: 0.75rem 0.95rem;
+  background: rgba(22, 25, 33, 0.05);
+  border: 1px solid rgba(125, 98, 50, 0.3);
+  border-radius: 4px;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: #362d24;
+}
+
+.reader-resilience-box strong {
+  color: #1c150e;
 }
 
 .btn-direct-repo:hover {
