@@ -191,9 +191,9 @@ A curated roadmap for elevating David Korenblit's personal portfolio into a worl
 - [x] **Desk Plaque & Text Contrast Enhancement:** Fixed text contrast on brass plaques ("משולחן העבודה של המחבר" and master author plaque) with deep dark engraved enamel lettering on polished brass finish.
 - [x] **Book Page Flip Animation:** Implemented 3D physical page-turning transition animation for grand open book navigation.
 - [x] **Author's Personal Notebook Content & Pagination:** Integrated the full authentic bilingual memoir into a two-spread physical notebook with page-turn controls.
-- [x] Pushed updates to GitHub (`origin/main`).
-
-### Upcoming Polish & Implementation Tasks
+- [x] **Enriched Project Narratives & Quantitative Metric Banners:** Updated all 5 featured volumes and 5 research notebooks with empirical metrics (+32.9% run disruption, +0.79 net pts/possession, ~3.2 extra wins, 162K->16K optical flow, 0-secrets Managed Identity, 60 FPS 100% RAII, 250+ players snowball sampling, £100M knapsack), architectural challenges, and dedicated responsive metric callout styling.
+- [x] **Removed Hover Previews:** Centered all interaction on clicking the physical book/notebook directly into the Grand Open Book spread.
+- [ ] **Job Description (JD) Research & Gap Analysis:** Map target roles (Python Backend, Data/Analytics Engineer, Applied AI/RAG) vs. demonstrated stack.
 - [ ] **Visual Plate Placeholders:** Incorporate visual plate placeholders inside the pages for project screenshots (once provided).
 - [ ] **Interactive Career Timeline:** Build the interactive career timeline inside the Author's Desk section.
 - [ ] **Mobile Responsive Audit:** Conduct final mobile responsive audit across various mobile device widths.
