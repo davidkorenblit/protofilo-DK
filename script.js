@@ -17,7 +17,7 @@ const FEATURED_BOOKS = [
       en: 'The Missing Teammate',
       he: 'החבר שחסר לך בצוות'
     },
-    tech: ['Python / Data Pipelines', 'PostgreSQL', 'Docker', 'FastAPI', 'C++17 (RAII)', 'Azure AI & RAG'],
+    tech: ['Machine Learning (ML)', 'Python / Data Pipelines', 'Hugging Face', 'Scikit-Learn', 'PostgreSQL', 'Docker', 'FastAPI', 'Azure AI & RAG', 'C++17 (RAII)'],
     demo: '',
     repo: '',
     isMemoir: true,
@@ -26,7 +26,7 @@ const FEATURED_BOOKS = [
         page1: {
           lead: {
             he: 'לקח לי חמש שנים לסיים תואר במדעי המחשב. הסיבה שזה לקח חמש שנים במקום שלוש היא שהייתי צריך להשלים את כל פערי הלימודים מאפס, אחרי שנים שהוקדשו כולן ללימוד תורה בישיבה. זה היה עולם עמוק ומעצב, אבל בנקודה מסוימת הבנתי שאני רוצה וצריך גם כלים נוספים.',
-            en: 'It took me five years to finish a computer science degree, catching up on high school credentials completely from scratch after years immersed in full-time Torah study in yeshiva. It was a profound world, but at a certain point, I realized I wanted and needed other tools as well.'
+            en: 'It took me five years to finish a CS degree instead of three because I started from scratch—closing academic gaps after years of full-time Torah study in yeshiva. It was a deeply formative world, but at a certain point, I realized I wanted and needed new tools.'
           },
           metrics: [
             { val: { he: '5 שנים', en: '5 Years' }, lbl: { he: 'השלמת פערים ותואר', en: 'Catching up & CS Degree' } },
@@ -39,11 +39,11 @@ const FEATURED_BOOKS = [
           heading: { he: 'אותנטיות, חוסן ומסע אישי', en: 'Rigor, Crucible & Authenticity' },
           text: {
             he: 'המעבר הזה — מבית המדרש המסורתי ישירות לסביבה אקדמית הישגית ותחרותית שבה כל צעד נמדד במספרים — לא היה טיול בפארק. זה היה מאבק עיקש. לאורך הדרך, המחזור שלי כמעט והתפרק לגמרי; אנשים מוכשרים נשרו בזה אחר זה, עד שנשארנו רק שניים שחצו את קו הסיום.',
-            en: 'That transition—from a traditional study hall to a fiercely achievement-driven academic environment where every single step is evaluated by the numbers—was brutally tough. Along the way, my entire class practically disintegrated, until only two of us were left to cross the finish line.'
+            en: 'Transitioning from a traditional study hall to a fiercely competitive, metric-driven academic world was no walk in the park. Along the way, my cohort practically fell apart—talented people dropped out until only two of us crossed the finish line.'
           },
           insight: {
             he: 'אז כן, תמצאו פסקאות שנשמעות כמו עוד קורות חיים על כמה שאני "חרוץ וממוקד". אבל המציאות פשוטה בהרבה: אני פשוט לא מפחד לטעות, לחטוף את המכה וללמוד ממנה. כי בסופו של יום, בלי טעויות אי אפשר באמת להתנסות — ובלי להתנסות, אי אפשר לבנות שום דבר בעל ערך.',
-            en: 'So yes, downstream you’ll find paragraphs about being "diligent and driven." But reality is simpler: I am just not afraid to mess up, take the hit, and learn from it. Because without mistakes you cannot experiment—and without experimenting, you cannot build value.'
+            en: 'So yes, later you’ll see typical resume phrases about being "diligent and driven." But reality is simpler: I am not afraid to mess up, take the hit, and learn. Without mistakes you cannot experiment—and without experimenting, you cannot build value.'
           }
         }
       },
@@ -64,12 +64,12 @@ const FEATURED_BOOKS = [
             {
               badge: { he: 'אחריות כוללת', en: 'Ownership' },
               title: { he: 'עמידה באתגרים ולא בריחה מהם', en: 'Enduring Challenges & Taking Responsibility' },
-              desc: { he: 'היכולת שלי "לסבול" את הזמנים הקשים, להתמודד עם האתגרים ולא לברוח מהם, ולקבל את מלוא האחריות מהתפקיד ומסביב לו.', en: 'The ability to endure the grind, confront challenges directly rather than dodge them, and take genuine ownership of the role and everything around it.' }
+              desc: { he: 'היכולת שלי "לסבול" את הזמנים הקשים, להתמודד עם האתגרים ולא לברוח מהם, ולקבל את מלוא האחריות מהתפקיד ומסביב לו.', en: 'Beyond technical skills, my ability to endure the grind, face challenges head-on without dodging, and take full ownership is what makes me the teammate you need.' }
             }
           ],
           resilience: {
-            he: '(אה, ואני ממש אוהב לקדוח בנתונים ולהבין מהם תובנות, אבל כאילו ממש אוהב).',
-            en: '(Oh, and I genuinely love drilling into data to unearth insights. Like, really love it).'
+            he: '(אה, ואני ממש אוהב לקדוח בנתונים, למידת מכונה (ML) ומודלים של Hugging Face, ולהבין מהם תובנות, אבל כאילו ממש אוהב).',
+            en: '(Oh, and I genuinely love drilling into data, Machine Learning (ML), and Hugging Face models to unearth insights. Like, really love it).'
           }
         },
         page4: {}
@@ -92,8 +92,8 @@ const FEATURED_BOOKS = [
       {
         page1: {
           lead: {
-            he: 'זה לא סוד שה-NBA השתנה, וששלשות הפכו לשם המשחק. אבל מעבר להחלטות שרואים בטלוויזיה, מסתתרים נתונים עמוקים של חילופים, מומנטום והשפעה סיבתית על המגרש.',
-            en: 'It’s no secret that the NBA has evolved, and the three-pointer has become king. But beneath the televised spectacle lies a complex web of substitutions, momentum shifts, and causal on-court impact.'
+            he: 'זה מתסכל לשבת על הספה ולצרוח על המאמן (או המסך) "קח כבר פסק זמן!!!!". אז הנה מערכת שתדע לספר למאמן שהוא נרדם בעמידה – ואפקטיבית ב-שיפור של 32.9% בעצירת ריצות יריב (בחלון של 90 שניות), תוספת של כ-0.79 נקודות לפוזשן בספוטי הקצה (Top 5%), ושווי ערך אסטרטגי של תוספת כ-3.2 ניצחונות בעונה.',
+            en: 'It’s frustrating sitting on the couch screaming at the coach (or the screen) "Take a timeout already!". So here is a system that alerts the coach when they are asleep at the wheel — with a verified 32.9% improvement in stopping opponent runs (within a 90-second window), adding ~0.79 points per possession in high-leverage spots (Top 5%), and delivering a strategic equivalent of ~3.2 extra wins per season.'
           },
           metrics: [
             { val: { he: '+32.9%', en: '+32.9%' }, lbl: { he: 'עצירת ריצות יריב (בפסק זמן בריצה ≥6)', en: 'Run disruption (timeout at run ≥6)' } },
@@ -160,8 +160,8 @@ const FEATURED_BOOKS = [
       {
         page1: {
           lead: {
-            he: 'כשכולם מסתכלים על הליגות הגדולות לגברים, כדורגל הנשים חווה פיצוץ של עניין — אבל תשתיות הנתונים סביבו עדיין נבנות.',
-            en: 'While everyone fixates on the men’s top flights, women’s football is experiencing an explosion of interest — yet the specialized data infrastructure around it is still in its infancy.'
+            he: 'אני אוהב ספורט, אני אוהב נתונים ואני אוהב אתגרים. כל זה יחד גרמו לי לקחת את ליגת הנשים בכדורגל האנגלית ולנסות לתת עליה תחזיות אנליטיות. זה מאתגר כי הדאטא חלקי ומפוזר הרבה יותר – הזדמנות מצוינת לפייפליינים שפוגשים את המציאות, וכמובן לכתוב על ספורט, שגם את זה אפשר לטעון שאני אוהב.',
+            en: 'I love sports, I love data, and I love hard challenges. All three came together when I decided to take the English Women’s Super League and build analytical forecasts around it. It’s challenging because the data is far more fragmented and sparse — a perfect playground for production pipelines that meet the messy real world, and of course an excuse to write about sports, which one could also argue I love.'
           },
           metrics: [
             { val: { he: '12 מועדונים', en: '12 Clubs' }, lbl: { he: 'כיסוי ליגה מלא של כל קבוצות ה-WSL', en: 'Complete Barclays WSL league coverage' } },
@@ -909,9 +909,9 @@ function renderBookSpread(item, type, spreadIndex = 0) {
   // Category Badge Text
   let catText = '';
   if (type === 'featured') {
-    catText = currentLang === 'he' ? 'כרך ראשי · עבודה מובילה' : 'FEATURED WORK · ARCHIVE';
+    catText = currentLang === 'he' ? 'פרויקט דגל · מערכת ליבה' : 'FLAGSHIP SYSTEM · CORE WORK';
   } else {
-    catText = currentLang === 'he' ? `מעבדה ומחקר · ${item.status || ''}` : `RESEARCH LAB · ${item.status || ''}`;
+    catText = currentLang === 'he' ? `מעבדת מחקר ופרוטוטיפים · ${item.status || ''}` : `RESEARCH LAB & PROTOTYPES · ${item.status || ''}`;
   }
 
   // SPREAD 0 (Pages 1 & 2: Story, Hook, Empirical Metrics & Problem Challenge)
@@ -973,7 +973,7 @@ function renderBookSpread(item, type, spreadIndex = 0) {
     leftContainer.innerHTML = `
       <div class="page-top-meta">
         <span class="reader-volume-badge">${item.volume}</span>
-        <span class="reader-category-badge">${currentLang === 'he' ? 'תיק ארכיטקטורה וצנרת נתונים' : 'ARCHITECTURAL BLUEPRINT'}</span>
+        <span class="reader-category-badge">${currentLang === 'he' ? 'ארכיטקטורת מערכת וצנרת נתונים' : 'ARCHITECTURAL BLUEPRINT'}</span>
       </div>
       <h2 class="reader-book-title" style="font-size: clamp(1.25rem, 2vw, 1.65rem);">${currentSpread.page3.heading[currentLang]}</h2>
       <div class="reader-gold-divider">
