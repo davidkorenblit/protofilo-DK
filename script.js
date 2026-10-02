@@ -1222,6 +1222,70 @@ function handleInitialDeepLink() {
 }
 
 // =====================================================================
+// CURRICULUM VITAE DROPDOWN SYSTEM (בנק קורות חיים - 7 גרסאות)
+// =====================================================================
+function initCVDropdowns() {
+  const headerWrapper = document.getElementById('header-cv-dropdown');
+  const headerTrigger = document.getElementById('header-cv-trigger');
+  const contactWrapper = document.getElementById('contact-cv-wrap');
+  const contactTrigger = document.getElementById('contact-cv-btn');
+
+  function closeAllDropdowns() {
+    if (headerWrapper) {
+      headerWrapper.classList.remove('is-open');
+      headerTrigger?.setAttribute('aria-expanded', 'false');
+    }
+    if (contactWrapper) {
+      contactWrapper.classList.remove('is-open');
+      contactTrigger?.setAttribute('aria-expanded', 'false');
+    }
+  }
+
+  // Header dropdown toggle
+  headerTrigger?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = headerWrapper?.classList.contains('is-open');
+    closeAllDropdowns();
+    if (!isOpen && headerWrapper) {
+      headerWrapper.classList.add('is-open');
+      headerTrigger.setAttribute('aria-expanded', 'true');
+    }
+  });
+
+  // Contact section dropdown toggle
+  contactTrigger?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = contactWrapper?.classList.contains('is-open');
+    closeAllDropdowns();
+    if (!isOpen && contactWrapper) {
+      contactWrapper.classList.add('is-open');
+      contactTrigger.setAttribute('aria-expanded', 'true');
+    }
+  });
+
+  // Close when clicking an item to download
+  document.querySelectorAll('.cv-menu-item').forEach(item => {
+    item.addEventListener('click', () => {
+      setTimeout(closeAllDropdowns, 150);
+    });
+  });
+
+  // Click outside closes
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('#header-cv-dropdown') && !e.target.closest('#contact-cv-wrap')) {
+      closeAllDropdowns();
+    }
+  });
+
+  // Escape key closes
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeAllDropdowns();
+    }
+  });
+}
+
+// =====================================================================
 // INITIALIZATION
 // =====================================================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -1239,9 +1303,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // Author's Desk Notebook page turn listeners
   initJournalNotebookEvents();
 
+  // CV bank dropdowns
+  initCVDropdowns();
+
   // Initial render with saved or default Hebrew language
   setLanguage(currentLang);
 
   // Deep linking: check URL hash on load
   handleInitialDeepLink();
 });
+

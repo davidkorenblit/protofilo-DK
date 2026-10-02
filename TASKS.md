@@ -194,8 +194,10 @@ A curated roadmap for elevating David Korenblit's personal portfolio into a worl
 - [x] **Enriched Project Narratives & Quantitative Metric Banners:** Updated all 5 featured volumes and 5 research notebooks with empirical metrics (+32.9% run disruption, +0.79 net pts/possession, ~3.2 extra wins, 162K->16K optical flow, 0-secrets Managed Identity, 60 FPS 100% RAII, 250+ players snowball sampling, £100M knapsack), architectural challenges, and dedicated responsive metric callout styling.
 - [x] **Removed Hover Previews:** Centered all interaction on clicking the physical book/notebook directly into the Grand Open Book spread.
 - [x] **Internal Multi-Spread Book Pagination:** Implemented internal multi-page turning across all volumes and lab notebooks (Spread 1 for Vision, Story & Empirical Metrics; Spread 2 for Deep Architecture, Step-by-Step Data Pipelines, System Resilience & Tech Stack Chips) with physical 3D page flip transitions, in-page corner turn buttons, and bottom spread bar navigation.
-- [x] **Footer Tagline Cleanup:** Removed generic promotional AI footer slogan from `index.html`.
+- [x] **Curriculum Vitae Bank (Option A Dropdown):** Built an archival drop-down selector supporting all 7 specialized CV tracks (ML Engineer, Data Scientist, AI/FDE, Algorithm Dev, Backend Engineer, Data Analyst, Full Hebrew) accessible directly from both the site header and contact dispatch station with standardized, web-safe filenames.
+- [x] **Refined High-Tech Navigation Headings:** Replaced literal translations with sharp, production-grade industry phrasing across navbar and section plaques (מערכות ליבה / Core Systems, מחקר ופיתוח / R&D Lab, אודות / About, יצירת קשר / Contact).
 - [ ] **Job Description (JD) Research & Gap Analysis:** Map target roles (Python Backend, Data/Analytics Engineer, Applied AI/RAG) vs. demonstrated stack.
 - [ ] **Visual Plate Placeholders:** Incorporate visual plate placeholders inside the pages for project screenshots (once provided).
 - [ ] **Interactive Career Timeline:** Build the interactive career timeline inside the Author's Desk section.
 - [ ] **Mobile Responsive Audit:** Conduct final mobile responsive audit across various mobile device widths.
+

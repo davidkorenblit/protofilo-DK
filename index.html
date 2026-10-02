@@ -24,18 +24,102 @@
 
       <nav id="main-nav" aria-label="Main navigation">
         <ul>
-          <li><a href="#bookcase" data-en="Flagship Works" data-he="פרויקטי דגל">Flagship Works</a></li>
-          <li><a href="#lab-shelf-container" data-en="Research Lab" data-he="מעבדת מחקר">Research Lab</a></li>
-          <li><a href="#study-desk" data-en="The Author" data-he="על המחבר">The Author</a></li>
+          <li><a href="#bookcase" data-en="Core Systems" data-he="מערכות ליבה">Core Systems</a></li>
+          <li><a href="#lab-shelf-container" data-en="R&amp;D Lab" data-he="מחקר ופיתוח (R&amp;D)">R&amp;D Lab</a></li>
+          <li><a href="#study-desk" data-en="About" data-he="אודות">About</a></li>
           <li><a href="#contact-station" data-en="Contact" data-he="יצירת קשר">Contact</a></li>
         </ul>
       </nav>
 
       <div class="header-right">
-        <a href="cv's/CV_for_ML/DavidKorenblit_CV (2).pdf" download="David_Korenblit_CV_ML.pdf" target="_blank" rel="noopener" class="header-cv-btn" id="header-cv-btn" aria-label="Download CV">
-          <span class="header-cv-icon">📄</span>
-          <span class="header-cv-text" data-en="CV (ML) ↓" data-he="קו״ח (ML) ↓">קו״ח (ML) ↓</span>
-        </a>
+        <!-- CV Dropdown Bank (Option A: 7 Specialized Versions) -->
+        <div class="cv-dropdown-wrapper" id="header-cv-dropdown">
+          <button type="button" class="header-cv-btn" id="header-cv-trigger" aria-haspopup="true" aria-expanded="false" aria-label="Download Curriculum Vitae">
+            <span class="header-cv-icon">📄</span>
+            <span class="header-cv-text" data-en="Curriculum Vitae" data-he="קורות חיים">קורות חיים</span>
+            <span class="cv-caret" aria-hidden="true">▾</span>
+          </button>
+
+          <div class="cv-dropdown-menu" id="header-cv-menu" role="menu" aria-label="CV Versions">
+            <div class="cv-dropdown-header">
+              <span class="cv-menu-title" data-en="Select Specialized CV" data-he="בחירת קו״ח לפי התמחות">בחירת קו״ח לפי התמחות</span>
+              <span class="cv-menu-subtitle" data-en="7 Versions · PDF" data-he="7 גרסאות להורדה">7 גרסאות להורדה</span>
+            </div>
+            <ul class="cv-menu-list">
+              <li>
+                <a href="cv's/CV_for_ML/David_Korenblit_CV_ML.pdf" download="David_Korenblit_CV_ML.pdf" target="_blank" rel="noopener" class="cv-menu-item" role="menuitem">
+                  <span class="cv-badge cv-badge-ml">ML</span>
+                  <div class="cv-item-text">
+                    <span class="cv-item-title">Machine Learning Engineer</span>
+                    <span class="cv-item-desc" data-en="PyTorch, Transformers, Scikit-Learn" data-he="מודלים, Hugging Face, Scikit-Learn">מודלים, Hugging Face, Scikit-Learn</span>
+                  </div>
+                  <span class="cv-dl-icon" aria-hidden="true">↓</span>
+                </a>
+              </li>
+              <li>
+                <a href="cv's/CV-for-DS/David_Korenblit_CV_DS.pdf" download="David_Korenblit_CV_DS.pdf" target="_blank" rel="noopener" class="cv-menu-item" role="menuitem">
+                  <span class="cv-badge cv-badge-ds">DS</span>
+                  <div class="cv-item-text">
+                    <span class="cv-item-title">Data Scientist</span>
+                    <span class="cv-item-desc" data-en="Causal Inference, EDA, Advanced Stats" data-he="הסקה סיבתית, מחקר נתונים וסטטיסטיקה">הסקה סיבתית, מחקר נתונים וסטטיסטיקה</span>
+                  </div>
+                  <span class="cv-dl-icon" aria-hidden="true">↓</span>
+                </a>
+              </li>
+              <li>
+                <a href="cv's/CV-for-ai_develepor_FDE/David_Korenblit_CV_AI_FDE.pdf" download="David_Korenblit_CV_AI_FDE.pdf" target="_blank" rel="noopener" class="cv-menu-item" role="menuitem">
+                  <span class="cv-badge cv-badge-ai">AI/FDE</span>
+                  <div class="cv-item-text">
+                    <span class="cv-item-title">AI Developer / FDE</span>
+                    <span class="cv-item-desc" data-en="LLM Agents, RAG Pipelines, Production AI" data-he="סוכני AI, פיתוח RAG ומערכות חכמות">סוכני AI, פיתוח RAG ומערכות חכמות</span>
+                  </div>
+                  <span class="cv-dl-icon" aria-hidden="true">↓</span>
+                </a>
+              </li>
+              <li>
+                <a href="cv's/CV-for_algo_dev/David_Korenblit_CV_AlgoDev.pdf" download="David_Korenblit_CV_AlgoDev.pdf" target="_blank" rel="noopener" class="cv-menu-item" role="menuitem">
+                  <span class="cv-badge cv-badge-algo">ALGO</span>
+                  <div class="cv-item-text">
+                    <span class="cv-item-title">Algorithm Developer</span>
+                    <span class="cv-item-desc" data-en="Optimization, Graph Theory, Physics" data-he="אופטימיזציה, פיזיקה ואלגוריתמיקה">אופטימיזציה, פיזיקה ואלגוריתמיקה</span>
+                  </div>
+                  <span class="cv-dl-icon" aria-hidden="true">↓</span>
+                </a>
+              </li>
+              <li>
+                <a href="cv's/CV-for-backend/David_Korenblit_CV_Backend.pdf" download="David_Korenblit_CV_Backend.pdf" target="_blank" rel="noopener" class="cv-menu-item" role="menuitem">
+                  <span class="cv-badge cv-badge-be">BE</span>
+                  <div class="cv-item-text">
+                    <span class="cv-item-title">Backend Engineer</span>
+                    <span class="cv-item-desc" data-en="FastAPI, Express, Docker, PostgreSQL" data-he="תשתיות ענן, FastAPI, Docker, SQL">תשתיות ענן, FastAPI, Docker, SQL</span>
+                  </div>
+                  <span class="cv-dl-icon" aria-hidden="true">↓</span>
+                </a>
+              </li>
+              <li>
+                <a href="cv's/CV_for_DATA-ANALYST/David_Korenblit_CV_DataAnalyst.pdf" download="David_Korenblit_CV_DataAnalyst.pdf" target="_blank" rel="noopener" class="cv-menu-item" role="menuitem">
+                  <span class="cv-badge cv-badge-da">DA</span>
+                  <div class="cv-item-text">
+                    <span class="cv-item-title">Data Analyst</span>
+                    <span class="cv-item-desc" data-en="SQL, BI Dashboards, Business Metrics" data-he="ניתוח עסקי, שאילתות מתקדמות ו-BI">ניתוח עסקי, שאילתות מתקדמות ו-BI</span>
+                  </div>
+                  <span class="cv-dl-icon" aria-hidden="true">↓</span>
+                </a>
+              </li>
+              <li class="cv-menu-divider"></li>
+              <li>
+                <a href="cv's/Hebrow-CV/David_Korenblit_CV_Hebrew.pdf" download="David_Korenblit_CV_Hebrew.pdf" target="_blank" rel="noopener" class="cv-menu-item cv-menu-hebrew" role="menuitem">
+                  <span class="cv-badge cv-badge-he">עב</span>
+                  <div class="cv-item-text">
+                    <span class="cv-item-title">קורות חיים בעברית (מלא)</span>
+                    <span class="cv-item-desc" data-en="Full Hebrew Curriculum Vitae" data-he="גרסה עברית מלאה ומקיפה">גרסה עברית מלאה ומקיפה</span>
+                  </div>
+                  <span class="cv-dl-icon" aria-hidden="true">↓</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
 
         <!-- Bilingual toggle -->
         <div class="lang-toggle" role="radiogroup" aria-label="Language selection">
@@ -104,7 +188,7 @@
         <div class="shelf-header">
           <div class="shelf-brass-tag">
             <span class="brass-screw"></span>
-            <span class="shelf-tag-title" data-en="I. FEATURED SYSTEMS · FLAGSHIP WORKS" data-he="מדף א׳ · פרויקטי דגל ומערכות ליבה">I. FEATURED SYSTEMS · FLAGSHIP WORKS</span>
+            <span class="shelf-tag-title" data-en="I. CORE SYSTEMS · PRODUCTION ARCHITECTURES" data-he="מדף א׳ · מערכות ליבה ופרודקשן">I. CORE SYSTEMS · PRODUCTION ARCHITECTURES</span>
             <span class="brass-screw"></span>
           </div>
         </div>
@@ -130,7 +214,7 @@
         <div class="shelf-header">
           <div class="shelf-brass-tag">
             <span class="brass-screw"></span>
-            <span class="shelf-tag-title" data-en="II. RESEARCH LAB &amp; PROTOTYPES" data-he="מדף ב׳ · מעבדת מחקר ופרוטוטיפים">II. RESEARCH LAB &amp; PROTOTYPES</span>
+            <span class="shelf-tag-title" data-en="II. R&amp;D LAB &amp; PROTOTYPES" data-he="מדף ב׳ · מחקר ופיתוח (R&amp;D) ואבות-טיפוס">II. R&amp;D LAB &amp; PROTOTYPES</span>
             <span class="brass-screw"></span>
           </div>
         </div>
@@ -163,7 +247,7 @@
         <div class="desk-mat">
           <div class="brass-plaque desk-plaque">
             <span class="brass-screw"></span>
-            <h2 class="plaque-text" data-en="FROM THE AUTHOR'S DESK" data-he="משולחן העבודה של המחבר">FROM THE AUTHOR'S DESK</h2>
+            <h2 class="plaque-text" data-en="ENGINEERING PROFILE · DAVID KORENBLIT" data-he="פרופיל הנדסי ואודות · דוד קורנבליט">ENGINEERING PROFILE · DAVID KORENBLIT</h2>
             <span class="brass-screw"></span>
           </div>
 
@@ -341,14 +425,96 @@
         </p>
 
         <div class="dispatch-cards">
-          <a href="cv's/CV_for_ML/DavidKorenblit_CV (2).pdf" download="David_Korenblit_CV_ML.pdf" target="_blank" rel="noopener" class="dispatch-card dispatch-card-cv" id="contact-cv">
-            <span class="dispatch-icon">📄</span>
-            <div class="dispatch-info">
-              <span class="dispatch-label" data-en="Curriculum Vitae" data-he="קורות חיים">Curriculum Vitae</span>
-              <span class="dispatch-val" data-en="Download CV (ML Focus) ↓" data-he="הורדת קו״ח (גרסת ML) ↓">Download CV (ML Focus) ↓</span>
+          <div class="dispatch-card-cv-wrap" id="contact-cv-wrap">
+            <button type="button" class="dispatch-card dispatch-card-cv dispatch-card-cv-btn" id="contact-cv-btn" aria-haspopup="true" aria-expanded="false">
+              <span class="dispatch-icon">📄</span>
+              <div class="dispatch-info">
+                <span class="dispatch-label" data-en="Curriculum Vitae" data-he="בנק קורות חיים">בנק קורות חיים</span>
+                <span class="dispatch-val" data-en="Select Specialized CV (7 Versions) ▾" data-he="בחירת קו״ח לפי התמחות (7 גרסאות) ▾">בחירת קו״ח לפי התמחות (7 גרסאות) ▾</span>
+              </div>
+              <span class="dispatch-arrow cv-caret">▾</span>
+            </button>
+
+            <div class="dispatch-cv-dropdown" id="contact-cv-menu" role="menu" aria-label="CV Versions">
+              <div class="cv-dropdown-header">
+                <span class="cv-menu-title" data-en="Select Specialized CV" data-he="בחירת קו״ח לפי התמחות">בחירת קו״ח לפי התמחות</span>
+                <span class="cv-menu-subtitle" data-en="7 Versions · PDF" data-he="7 גרסאות להורדה">7 גרסאות להורדה</span>
+              </div>
+              <ul class="cv-menu-list">
+                <li>
+                  <a href="cv's/CV_for_ML/David_Korenblit_CV_ML.pdf" download="David_Korenblit_CV_ML.pdf" target="_blank" rel="noopener" class="cv-menu-item" role="menuitem">
+                    <span class="cv-badge cv-badge-ml">ML</span>
+                    <div class="cv-item-text">
+                      <span class="cv-item-title">Machine Learning Engineer</span>
+                      <span class="cv-item-desc" data-en="PyTorch, Transformers, Scikit-Learn" data-he="מודלים, Hugging Face, Scikit-Learn">מודלים, Hugging Face, Scikit-Learn</span>
+                    </div>
+                    <span class="cv-dl-icon" aria-hidden="true">↓</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="cv's/CV-for-DS/David_Korenblit_CV_DS.pdf" download="David_Korenblit_CV_DS.pdf" target="_blank" rel="noopener" class="cv-menu-item" role="menuitem">
+                    <span class="cv-badge cv-badge-ds">DS</span>
+                    <div class="cv-item-text">
+                      <span class="cv-item-title">Data Scientist</span>
+                      <span class="cv-item-desc" data-en="Causal Inference, EDA, Advanced Stats" data-he="הסקה סיבתית, מחקר נתונים וסטטיסטיקה">הסקה סיבתית, מחקר נתונים וסטטיסטיקה</span>
+                    </div>
+                    <span class="cv-dl-icon" aria-hidden="true">↓</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="cv's/CV-for-ai_develepor_FDE/David_Korenblit_CV_AI_FDE.pdf" download="David_Korenblit_CV_AI_FDE.pdf" target="_blank" rel="noopener" class="cv-menu-item" role="menuitem">
+                    <span class="cv-badge cv-badge-ai">AI/FDE</span>
+                    <div class="cv-item-text">
+                      <span class="cv-item-title">AI Developer / FDE</span>
+                      <span class="cv-item-desc" data-en="LLM Agents, RAG Pipelines, Production AI" data-he="סוכני AI, פיתוח RAG ומערכות חכמות">סוכני AI, פיתוח RAG ומערכות חכמות</span>
+                    </div>
+                    <span class="cv-dl-icon" aria-hidden="true">↓</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="cv's/CV-for_algo_dev/David_Korenblit_CV_AlgoDev.pdf" download="David_Korenblit_CV_AlgoDev.pdf" target="_blank" rel="noopener" class="cv-menu-item" role="menuitem">
+                    <span class="cv-badge cv-badge-algo">ALGO</span>
+                    <div class="cv-item-text">
+                      <span class="cv-item-title">Algorithm Developer</span>
+                      <span class="cv-item-desc" data-en="Optimization, Graph Theory, Physics" data-he="אופטימיזציה, פיזיקה ואלגוריתמיקה">אופטימיזציה, פיזיקה ואלגוריתמיקה</span>
+                    </div>
+                    <span class="cv-dl-icon" aria-hidden="true">↓</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="cv's/CV-for-backend/David_Korenblit_CV_Backend.pdf" download="David_Korenblit_CV_Backend.pdf" target="_blank" rel="noopener" class="cv-menu-item" role="menuitem">
+                    <span class="cv-badge cv-badge-be">BE</span>
+                    <div class="cv-item-text">
+                      <span class="cv-item-title">Backend Engineer</span>
+                      <span class="cv-item-desc" data-en="FastAPI, Express, Docker, PostgreSQL" data-he="תשתיות ענן, FastAPI, Docker, SQL">תשתיות ענן, FastAPI, Docker, SQL</span>
+                    </div>
+                    <span class="cv-dl-icon" aria-hidden="true">↓</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="cv's/CV_for_DATA-ANALYST/David_Korenblit_CV_DataAnalyst.pdf" download="David_Korenblit_CV_DataAnalyst.pdf" target="_blank" rel="noopener" class="cv-menu-item" role="menuitem">
+                    <span class="cv-badge cv-badge-da">DA</span>
+                    <div class="cv-item-text">
+                      <span class="cv-item-title">Data Analyst</span>
+                      <span class="cv-item-desc" data-en="SQL, BI Dashboards, Business Metrics" data-he="ניתוח עסקי, שאילתות מתקדמות ו-BI">ניתוח עסקי, שאילתות מתקדמות ו-BI</span>
+                    </div>
+                    <span class="cv-dl-icon" aria-hidden="true">↓</span>
+                  </a>
+                </li>
+                <li class="cv-menu-divider"></li>
+                <li>
+                  <a href="cv's/Hebrow-CV/David_Korenblit_CV_Hebrew.pdf" download="David_Korenblit_CV_Hebrew.pdf" target="_blank" rel="noopener" class="cv-menu-item cv-menu-hebrew" role="menuitem">
+                    <span class="cv-badge cv-badge-he">עב</span>
+                    <div class="cv-item-text">
+                      <span class="cv-item-title">קורות חיים בעברית (מלא)</span>
+                      <span class="cv-item-desc" data-en="Full Hebrew Curriculum Vitae" data-he="גרסה עברית מלאה ומקיפה">גרסה עברית מלאה ומקיפה</span>
+                    </div>
+                    <span class="cv-dl-icon" aria-hidden="true">↓</span>
+                  </a>
+                </li>
+              </ul>
             </div>
-            <span class="dispatch-arrow">↓</span>
-          </a>
+          </div>
 
           <a href="https://github.com/davidkorenblit" target="_blank" rel="noopener" class="dispatch-card" id="contact-github">
             <span class="dispatch-icon">💻</span>
