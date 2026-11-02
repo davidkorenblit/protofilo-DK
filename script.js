@@ -352,6 +352,80 @@ const FEATURED_BOOKS = [
         page4: {}
       }
     ]
+  },
+  {
+    id: 5,
+    slug: 'codereview-arena',
+    aliases: ['train-youre-brain', 'train-your-brain'],
+    cover: 'cognac',
+    volume: 'VOL. V',
+    title: {
+      en: 'CodeReview Arena – Developer Training Simulator',
+      he: 'CodeReview Arena – סימולטור אימון ל-Code Review'
+    },
+    tech: ['React 18 + Vite', 'Monaco Editor', 'Cloudflare Workers (Edge)', 'Hono (TypeScript)', 'Google Gemini 3.5 Flash Lite', 'Supabase (PostgreSQL)', 'Prompt Sandboxing', 'Defense-in-Depth'],
+    demo: 'https://davidkorenblit.github.io/Train-Youre-Brain/',
+    repo: 'https://github.com/davidkorenblit/Train-Youre-Brain',
+    spreads: [
+      {
+        page1: {
+          lead: {
+            he: 'כולם מלמדים מפתחים איך לכתוב קוד, אבל כמעט אף אחד לא מלמד איך לקרוא קוד של אחרים – שזה בפועל 70% מעבודת ההנדסה בצוות. CodeReview Arena הופך את המיומנות הקריטית של ביצוע PR Review לזירת אימון אינטראקטיבית: במקום לכתוב קוד מאפס, מפתחים סוקרים Pull Requests ריאליסטיים, צדים באגים נסתרים, השהיות ודליפות אבטחה, משאירים הערות Line-by-Line ומקבלים ניקוד מיידי ומשוב נוקב משופט AI.',
+            en: 'Everyone teaches developers how to write code, but almost nobody trains them how to read other people’s code — which makes up 70% of real-world software engineering. CodeReview Arena turns code review into a gamified training ground: instead of writing code from scratch, developers inspect realistic PRs, hunt for hidden race conditions and security flaws, leave line-by-line comments, and receive instant, rigorous feedback from an AI Judge.'
+          },
+          metrics: [
+            { val: { he: '35 אתגרים', en: '35 Challenges' }, lbl: { he: 'מערכי קוד מדורגים ב-3 רמות קושי מקצועיות', en: 'Curated challenges across 3 progressive levels' } },
+            { val: { he: '<2s', en: '<2s' }, lbl: { he: 'סבב בדיקה מלא מקצה לקצה בריצת Edge', en: 'Sub-2s roundtrip via Cloudflare Edge runtime' } },
+            { val: { he: '6 שכבות', en: '6 Tiers' }, lbl: { he: 'ארכיטקטורת Defense-in-Depth להגנת שופט ה-AI', en: 'Defense-in-depth prompt sandbox architecture' } },
+            { val: { he: '0 Cold Starts', en: '0 Cold Starts' }, lbl: { he: 'ביצועים גלובליים עם Cloudflare Workers ו-Hono', en: 'Serverless edge performance with Hono & TS' } }
+          ]
+        },
+        page2: {
+          chapter: { he: 'ארכיטקטורת אבטחה ושופט AI', en: 'AI DEFENSE-IN-DEPTH & JUDGING' },
+          heading: { he: 'הגנה רב-שכבתית מפני מניפולציות פרומפט והזרקות', en: 'Multi-Tier Prompt Injection & Scoring Defense' },
+          text: {
+            he: 'כשמאפשרים למשתמשים להגיש הערות חופשיות לשופט LLM שמחלק ציונים, הסיכון להזרקות פרומפט (Jailbreaking, Override, וציון 100 מזויף) הוא מיידי. המערכת מיישמת ארכיטקטורת Defense-in-Depth מלאה: הפרדת הנחיות המערכת ב-systemInstruction, בידוד קלט המשתמש בתוך Delimiters קריפטוגרפיים אקראיים (Dynamic Nonce), בדיקות שפיות מחמירות וביטויי Regex לזיהוי תבניות עקיפה, אכיפת חוזה JSON נוקשה דרך responseSchema של Gemini, ובדיקת שפיות שרתית נוספת לפני שמירת הציון במסד הנתונים.',
+            en: 'Allowing unconstrained user comments into an LLM scoring pipeline creates acute vulnerability to prompt injections, scoring manipulation, and jailbreaks. The AI Judge enforces a multi-tier defense: strict systemInstruction separation, dynamic nonce encapsulation with cryptographic UUID delimiters, server-side bounds and override regex sanitization, enforced Gemini responseSchema JSON contracts, and post-evaluation score reconciliation before saving to the database.'
+          },
+          insight: {
+            he: 'Dynamic Nonce Sandboxing: כל הגשת משתמש נעטפת ב-<<<USER_DATA_${crypto.randomUUID()}>>> חד-פעמי, מה שמנטרל ניסיונות של מפתחים "לסגור" את בלוק הטקסט ולהשתלט על הנחיות השופט.',
+            en: 'Dynamic Nonce Sandboxing: Each user review submission is encapsulated within single-use UUID delimiters (<<<USER_DATA_${crypto.randomUUID()}>>>), mathematically preventing prompt-breakout overrides.'
+          }
+        }
+      },
+      {
+        page3: {
+          heading: { he: 'ארכיטקטורת Edge גלובלית, מסד Supabase ו-Monaco', en: 'Global Edge Architecture, Supabase & Monaco' },
+          steps: [
+            {
+              badge: { he: 'React 18 & Monaco', en: 'React 18 & Monaco' },
+              title: { he: 'ממשק PR בסגנון GitHub', en: 'GitHub PR-Style Client' },
+              desc: { he: 'ממשק React מודרני ב-Vite המשלב עורך Monaco אינטראקטיבי להערות Line-by-Line, הדגשת תחביר וחוויית סקירה מקצועית.', en: 'Interactive React SPA with Monaco Editor for line-by-line review comments, syntax highlighting, and authentic PR ergonomics.' }
+            },
+            {
+              badge: { he: 'Cloudflare Workers', en: 'Cloudflare Workers' },
+              title: { he: 'שרת Edge עולמי ב-Hono', en: 'Edge API & Rate Limiting' },
+              desc: { he: 'שכבת API מבוזרת בקצה הרשת (Edge) עם זמני השהיה אפסיים, אפס Cold Starts ו-Rate Limiting בחלון נע (15 הגשות / 5 דקות ל-IP).', en: 'Serverless Edge API running on Cloudflare Workers + Hono with sub-second response times and sliding-window rate limiting.' }
+            },
+            {
+              badge: { he: 'Gemini 3.5 Flash Lite', en: 'Gemini 3.5 Flash Lite' },
+              title: { he: 'מנוע שיפוט והערכה אובייקטיבי', en: 'AI Evaluation Engine' },
+              desc: { he: 'הערכה אוטומטית של ממצאי המשתמש מול Golden Bugs רשמיים, עם פלט JSON מובנה ונימוקים מדויקים לכל נקודה.', en: 'Evaluates user findings against golden bugs with structured JSON outputs and transparent, rigorous feedback.' }
+            },
+            {
+              badge: { he: 'Supabase Cloud', en: 'Supabase Cloud' },
+              title: { he: 'בסיס נתונים רלציוני', en: 'PostgreSQL Challenge Store' },
+              desc: { he: 'שמירת 35 אתגרים מדורגים בשלוש רמות (Fundamentals, Software Engineering, Backend Production) והיסטוריית בדיקות.', en: 'Cloud PostgreSQL storing 35 curated multi-level challenges, reference golden bugs, and submission history.' }
+            }
+          ],
+          resilience: {
+            he: 'סביבת Edge נטולת שרת (Serverless) הפועלת תת-2 שניות מקצה לקצה, עם עמידות מלאה לשיאי עומס, בקרת קצב בקשות ומניעת מניפולציות ללא צורך בתחזוקת שרתים מסורתיים.',
+            en: 'Serverless edge runtime delivering sub-2s roundtrip latency worldwide with zero cold starts, resilient sliding-window rate limiting, and multi-tier prompt injection isolation.'
+          }
+        },
+        page4: {}
+      }
+    ]
   }
 ];
 
@@ -1210,12 +1284,12 @@ function handleInitialDeepLink() {
   const hash = window.location.hash.replace('#', '').toLowerCase();
   if (!hash) return;
 
-  const featuredMatch = FEATURED_BOOKS.find(b => b.slug.toLowerCase() === hash);
+  const featuredMatch = FEATURED_BOOKS.find(b => b.slug.toLowerCase() === hash || (b.aliases && b.aliases.includes(hash)));
   if (featuredMatch) {
     openGrandBook(featuredMatch, 'featured');
     return;
   }
-  const labMatch = LAB_NOTEBOOKS.find(b => b.slug.toLowerCase() === hash);
+  const labMatch = LAB_NOTEBOOKS.find(b => b.slug.toLowerCase() === hash || (b.aliases && b.aliases.includes(hash)));
   if (labMatch) {
     openGrandBook(labMatch, 'lab');
   }

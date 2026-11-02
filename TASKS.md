@@ -81,6 +81,24 @@ A curated roadmap for elevating David Korenblit's personal portfolio into a worl
 
 ---
 
+### Volume V · CodeReview Arena – Developer Training Simulator
+* **GitHub Repository:** [`Train-Youre-Brain`](https://github.com/davidkorenblit/Train-Youre-Brain)
+* **Live Deployment:** [CodeReview Arena Live App](https://davidkorenblit.github.io/Train-Youre-Brain/)
+* **The Story & Goal:**
+  Everyone teaches developers how to write code, but almost nobody trains them how to read other people's code — which makes up 70% of real-world software engineering. CodeReview Arena turns code review into a gamified training ground: instead of writing code from scratch, developers inspect realistic PRs, hunt for hidden race conditions and security flaws, leave line-by-line comments, and receive instant, rigorous feedback from an AI Judge.
+* **The Engineering Challenge:**
+  Allowing unconstrained user comments into an LLM scoring pipeline creates acute vulnerability to prompt injections, scoring manipulation, and jailbreaks. The challenge was building an AI Judge with a 6-tier Defense-in-Depth architecture:
+  - Dynamic Nonce Sandboxing (`<<<USER_DATA_${crypto.randomUUID()}>>>`)
+  - Strict `systemInstruction` separation and backend boundary sanitization
+  - Enforced Gemini JSON schema contract via `responseSchema`
+  - Global serverless edge deployment on Cloudflare Workers (Hono + TypeScript) with sliding-window rate limiting (<2s roundtrip).
+* **Empirical Impact Metrics:**
+  - **35 Curated Challenges:** Split across 3 levels (Fundamentals, Software Engineering, Real-World Backend).
+  - **Sub-2s Roundtrip:** Cloudflare Workers Edge API with 0 cold starts.
+  - **6 Defense Tiers:** Full prompt injection & sandbox protection.
+
+---
+
 ### Research Notebooks (The Lower Shelf R&D Pipeline)
 
 *Highlighting the active experiments, hypotheses, and in-flight builds:*
